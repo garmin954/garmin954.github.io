@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>字符串的扩展 - Garmin Notes</title>
+
+
+    <meta name="description" content="字符串的扩展">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串的扩展">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/index.html">
+<meta property="og:site_name" content="Garmin Notes">
+<meta property="og:description" content="字符串的扩展">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-14T01:09:58.344Z">
+<meta property="article:modified_time" content="2020-05-09T14:38:41.783Z">
+<meta property="article:author" content="Garmin">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="字符串的扩展" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>字符串的扩展
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-14T01:09:58.344Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    16 分钟 读完 (大约 2413 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>字符串的扩展</p>
+<a id="more"></a>
+
+<h3 id="字符的-Unicode-表示法"><a href="#字符的-Unicode-表示法" class="headerlink" title="字符的 Unicode 表示法"></a>字符的 Unicode 表示法</h3><p>ES6 加强了对 Unicode 的支持，允许采用\uxxxx形式表示一个字符，其中xxxx表示字符的 Unicode 码点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\u0061"</span></span><br><span class="line"><span class="comment">// "a"</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这种表示法只限于码点在\u0000~\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\uD842\uDFB7"</span></span><br><span class="line"><span class="comment">// "𠮷"</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u20BB7"</span></span><br><span class="line"><span class="comment">// " 7"</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面代码表示，如果直接在\u后面跟上超过0xFFFF的数值（比如\u20BB7），JavaScript 会理解成\u20BB+7。<br>由于\u20BB是一个不可打印字符，所以只会显示一个空格，后面跟着一个7。</p>
+</blockquote>
+<p>ES6 对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\u&#123;20BB7&#125;"</span></span><br><span class="line"><span class="comment">// "𠮷"</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u&#123;41&#125;\u&#123;42&#125;\u&#123;43&#125;"</span></span><br><span class="line"><span class="comment">// "ABC"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hello = <span class="number">123</span>;</span><br><span class="line">hell\u&#123;<span class="number">6</span>F&#125; <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="string">'\u&#123;1F680&#125;'</span> === <span class="string">'\uD83D\uDE80'</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面代码中，最后一个例子表明，大括号表示法与四字节的 UTF-16 编码是等价的。</p>
+</blockquote>
+<p>有了这种表示法之后，JavaScript 共有 6 种方法可以表示一个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'\z'</span> === <span class="string">'z'</span>  <span class="comment">// true</span></span><br><span class="line"><span class="string">'\172'</span> === <span class="string">'z'</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">'\x7A'</span> === <span class="string">'z'</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">'\u007A'</span> === <span class="string">'z'</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">'\u&#123;7A&#125;'</span> === <span class="string">'z'</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的遍历器接口"><a href="#字符串的遍历器接口" class="headerlink" title="字符串的遍历器接口"></a>字符串的遍历器接口</h3><p>ES6 为字符串添加了遍历器接口（详见《Iterator》一章），使得字符串可以被for…of循环遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(codePoint)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "f"</span></span><br><span class="line"><span class="comment">// "o"</span></span><br><span class="line"><span class="comment">// "o"</span></span><br></pre></td></tr></table></figure>
+
+<p>除了遍历字符串，这个遍历器最大的优点是可以识别大于0xFFFF的码点，传统的for循环无法识别这样的码点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> text = <span class="built_in">String</span>.fromCodePoint(<span class="number">0x20BB7</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; text.length; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(text[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// " "</span></span><br><span class="line"><span class="comment">// " "</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> text) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "𠮷"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面代码中，字符串text只有一个字符，但是for循环会认为它包含两个字符（都不可打印），<br>而for…of循环会正确识别出这一个字符。</p>
+</blockquote>
+<h3 id="直接输入-U-2028-和-U-2029"><a href="#直接输入-U-2028-和-U-2029" class="headerlink" title="直接输入 U+2028 和 U+2029"></a>直接输入 U+2028 和 U+2029</h3><p> JavaScript 字符串允许直接输入字符，以及输入字符的转义形式。举例来说，“中”的 Unicode 码点是 U+4e2d，你可以直接在字符串里面输入这个汉字，也可以输入它的转义形式\u4e2d，两者是等价的。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'中'</span> === <span class="string">'\u4e2d'</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure><br> 但是，JavaScript 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">U+<span class="number">005</span>C：反斜杠（reverse solidus)</span><br><span class="line">U+<span class="number">000</span>D：回车（carriage <span class="keyword">return</span>）</span><br><span class="line">U+<span class="number">2028</span>：行分隔符（line separator）</span><br><span class="line">U+<span class="number">2029</span>：段分隔符（paragraph separator）</span><br><span class="line">U+<span class="number">000</span>A：换行符（line feed）</span><br></pre></td></tr></table></figure></p>
+<p> 举例来说，字符串里面不能直接包含反斜杠，一定要转义写成\或者\u005c。</p>
+<p> 这个规定本身没有问题，麻烦在于 JSON 格式允许字符串里面直接使用 U+2028（行分隔符）和 U+2029（段分隔符）。<br> 这样一来，服务器输出的 JSON 被JSON.parse解析，就有可能直接报错。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> json = <span class="string">'"\u2028"'</span>;</span><br><span class="line"><span class="built_in">JSON</span>.parse(json); <span class="comment">// 可能报错</span></span><br></pre></td></tr></table></figure><br> JSON 格式已经冻结（RFC 7159），没法修改了。为了消除这个报错，ES2019 允许 JavaScript 字符串直接输入 U+2028（行分隔符）和 U+2029（段分隔符）。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PS = <span class="built_in">eval</span>(<span class="string">"'\u2029'"</span>);</span><br></pre></td></tr></table></figure></p>
+<p> 根据这个提案，上面的代码不会报错。</p>
+<p> 注意，模板字符串现在就允许直接输入这两个字符。另外，正则表达式依然不允许直接输入这两个字符，这是没有问题的，因为 JSON 本来就不允许直接包含正则表达式。</p>
+<h3 id="JSON-stringify-的改造"><a href="#JSON-stringify-的改造" class="headerlink" title="JSON.stringify() 的改造"></a>JSON.stringify() 的改造</h3><p> 根据标准，JSON 数据必须是 UTF-8 编码。但是，现在的<code>JSON.stringify()</code>方法有可能返回不符合<br> UTF-8 标准的字符串。</p>
+<p> 具体来说，UTF-8 标准规定，<code>0xD800</code>到<code>0xDFFF</code>之间的码点，不能单独使用，必须配对使用。<br> 比如，<code>\uD834\uDF06</code>是两个码点，但是必须放在一起配对使用，代表字符𝌆。<br> 这是为了表示码点大于<code>0xFFFF</code>的字符的一种变通方法。单独使用<code>\uD834</code>和<code>\uDFO6</code>这两个码点是不合法的，<br> 或者颠倒顺序也不行，因为<code>\uDF06\uD834</code>并没有对应的字符。</p>
+<p> <code>JSON.stringify()</code>的问题在于，它可能返回<code>0xD800</code>到<code>0xDFFF</code>之间的单个码点。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(<span class="string">'\u&#123;D834&#125;'</span>) <span class="comment">// "\u&#123;D834&#125;"</span></span><br></pre></td></tr></table></figure><br> 为了确保返回的是合法的 UTF-8 字符，ES2019 改变了JSON.stringify()的行为。如果遇到0xD800到0xDFFF之间的单个码点，或者不存在的配对形式，它会返回转义字符串，留给应用自己决定下一步的处理。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(<span class="string">'\u&#123;D834&#125;'</span>) <span class="comment">// ""\\uD834""</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(<span class="string">'\uDF06\uD834'</span>) <span class="comment">// ""\\udf06\\ud834""</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><p>传统的 JavaScript 语言，输出模板通常是这样写的（下面使用了 jQuery 的方法）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#result'</span>).append(</span><br><span class="line">  <span class="string">'There are &lt;b&gt;'</span> + basket.count + <span class="string">'&lt;/b&gt; '</span> +</span><br><span class="line">  <span class="string">'items in your basket, '</span> +</span><br><span class="line">  <span class="string">'&lt;em&gt;'</span> + basket.onSale +</span><br><span class="line">  <span class="string">'&lt;/em&gt; are on sale!'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>上面这种写法相当繁琐不方便，ES6 引入了模板字符串解决这个问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#result'</span>).append(<span class="string">`</span></span><br><span class="line"><span class="string">  There are &lt;b&gt;<span class="subst">$&#123;basket.count&#125;</span>&lt;/b&gt; items</span></span><br><span class="line"><span class="string">   in your basket, &lt;em&gt;<span class="subst">$&#123;basket.onSale&#125;</span>&lt;/em&gt;</span></span><br><span class="line"><span class="string">  are on sale!</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，<br>也可以用来定义多行字符串，或者在字符串中嵌入变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"><span class="string">`In JavaScript '\n' is a line-feed.`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行字符串</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`string text line 1</span></span><br><span class="line"><span class="string">string text line 2`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串中嵌入变量</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"Bob"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面代码中的模板字符串，都是用反引号表示。如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> greeting = <span class="string">`\`Yo\` World!`</span>;</span><br></pre></td></tr></table></figure>
+<p>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#list'</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，所有模板字符串的空格和换行，都是被保留的，比如<ul>标签前面会有一个换行。如果你不想要这个换行，可以使用trim方法消除它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#list'</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>.trim());</span><br></pre></td></tr></table></figure>
+
+<p>模板字符串中嵌入变量，需要将变量名写在${}之中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">authorize</span>(<span class="params">user, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!user.hasPrivilege(action)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">      <span class="comment">// 传统写法为</span></span><br><span class="line">      <span class="comment">// 'User '</span></span><br><span class="line">      <span class="comment">// + user.name</span></span><br><span class="line">      <span class="comment">// + ' is not authorized to do '</span></span><br><span class="line">      <span class="comment">// + action</span></span><br><span class="line">      <span class="comment">// + '.'</span></span><br><span class="line">      <span class="string">`User <span class="subst">$&#123;user.name&#125;</span> is not authorized to do <span class="subst">$&#123;action&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y&#125;</span> = <span class="subst">$&#123;x + y&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 2 = 3"</span></span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y * <span class="number">2</span>&#125;</span> = <span class="subst">$&#123;x + y * <span class="number">2</span>&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 4 = 5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="string">`<span class="subst">$&#123;obj.x + obj.y&#125;</span>`</span></span><br><span class="line"><span class="comment">// "3"</span></span><br></pre></td></tr></table></figure>
+
+<p>模板字符串之中还能调用函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"Hello World"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">`foo <span class="subst">$&#123;fn()&#125;</span> bar`</span></span><br><span class="line"><span class="comment">// foo Hello World bar</span></span><br></pre></td></tr></table></figure>
+<p>如果大括号中的值不是字符串，将按照一般的规则转为字符串。比如，大括号中是一个对象，将默认调用对象的toString方法。</p>
+<p>如果模板字符串中的变量没有声明，将报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量place没有声明</span></span><br><span class="line"><span class="keyword">let</span> msg = <span class="string">`Hello, <span class="subst">$&#123;place&#125;</span>`</span>;</span><br><span class="line"><span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<p>由于模板字符串的大括号内部，就是执行 JavaScript 代码，因此如果大括号内部是一个字符串，将会原样输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`Hello <span class="subst">$&#123;<span class="string">'World'</span>&#125;</span>`</span></span><br><span class="line"><span class="comment">// "Hello World"</span></span><br></pre></td></tr></table></figure>
+
+<p>模板字符串甚至还能嵌套。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tmpl = <span class="function"><span class="params">addrs</span> =&gt;</span> <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;table&gt;</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;addrs.map(addr =&gt; <span class="string">`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &lt;tr&gt;&lt;td&gt;<span class="subst">$&#123;addr.first&#125;</span>&lt;/td&gt;&lt;/tr&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &lt;tr&gt;&lt;td&gt;<span class="subst">$&#123;addr.last&#125;</span>&lt;/td&gt;&lt;/tr&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  `</span>).join(<span class="string">''</span>)&#125;</span></span></span><br><span class="line"><span class="string">  &lt;/table&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，模板字符串的变量之中，又嵌入了另一个模板字符串，使用方法如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">    &#123; <span class="attr">first</span>: <span class="string">'&lt;Jane&gt;'</span>, <span class="attr">last</span>: <span class="string">'Bond'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">first</span>: <span class="string">'Lars'</span>, <span class="attr">last</span>: <span class="string">'&lt;Croft&gt;'</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tmpl(data));</span><br><span class="line"><span class="comment">// &lt;table&gt;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   &lt;tr&gt;&lt;td&gt;&lt;Jane&gt;&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="comment">//   &lt;tr&gt;&lt;td&gt;Bond&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   &lt;tr&gt;&lt;td&gt;Lars&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="comment">//   &lt;tr&gt;&lt;td&gt;&lt;Croft&gt;&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// &lt;/table&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要引用模板字符串本身，在需要时执行，可以写成函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> func = <span class="function">(<span class="params">name</span>) =&gt;</span> <span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span>;</span><br><span class="line">func(<span class="string">'Jack'</span>) <span class="comment">// "Hello Jack!"</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，模板字符串写成了一个函数的返回值。执行这个函数，就相当于执行这个模板字符串了。</p>
+<h3 id="实例：模板编译"><a href="#实例：模板编译" class="headerlink" title="实例：模板编译"></a>实例：模板编译</h3><p> 下面，我们来看一个通过模板字符串，生成正式模板的实例。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;% for(let i=0; i &lt; data.supplies.length; i++) &#123; %&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt;&lt;%= data.supplies[i] %&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;% &#125; %&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure></p>
+<p> 上面代码在模板字符串之中，放置了一个常规模板。该模板使用&lt;%…%&gt;放置 JavaScript 代码，使用&lt;%= … %&gt;输出 JavaScript 表达式。</p>
+<p> 怎么编译这个模板字符串呢？</p>
+<p> 一种思路是将其转换为 JavaScript 表达式字符串。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo(<span class="string">'&lt;ul&gt;'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i &lt; data.supplies.length; i++) &#123;</span><br><span class="line">  echo(<span class="string">'&lt;li&gt;'</span>);</span><br><span class="line">  echo(data.supplies[i]);</span><br><span class="line">  echo(<span class="string">'&lt;/li&gt;'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">echo(<span class="string">'&lt;/ul&gt;'</span>);</span><br></pre></td></tr></table></figure></p>
+<p> 这个转换使用正则表达式就行了。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> evalExpr = <span class="regexp">/&lt;%=(.+?)%&gt;/g</span>;</span><br><span class="line"><span class="keyword">let</span> expr = <span class="regexp">/&lt;%([\s\S]+?)%&gt;/g</span>;</span><br><span class="line"></span><br><span class="line">template = template</span><br><span class="line">  .replace(evalExpr, <span class="string">'`); \n  echo( $1 ); \n  echo(`'</span>)</span><br><span class="line">  .replace(expr, <span class="string">'`); \n $1 \n  echo(`'</span>);</span><br><span class="line"></span><br><span class="line">template = <span class="string">'echo(`'</span> + template + <span class="string">'`);'</span>;</span><br></pre></td></tr></table></figure></p>
+<p> 然后，将template封装在一个函数里面返回，就可以了。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> script =</span><br><span class="line"><span class="string">`(function parse(data)&#123;</span></span><br><span class="line"><span class="string">  let output = "";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  function echo(html)&#123;</span></span><br><span class="line"><span class="string">    output += html;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  <span class="subst">$&#123; template &#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  return output;</span></span><br><span class="line"><span class="string">&#125;)`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> script;</span><br></pre></td></tr></table></figure></p>
+<p> 将上面的内容拼装成一个模板编译函数compile。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">template</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> evalExpr = <span class="regexp">/&lt;%=(.+?)%&gt;/g</span>;</span><br><span class="line">  <span class="keyword">const</span> expr = <span class="regexp">/&lt;%([\s\S]+?)%&gt;/g</span>;</span><br><span class="line"></span><br><span class="line">  template = template</span><br><span class="line">    .replace(evalExpr, <span class="string">'`); \n  echo( $1 ); \n  echo(`'</span>)</span><br><span class="line">    .replace(expr, <span class="string">'`); \n $1 \n  echo(`'</span>);</span><br><span class="line"></span><br><span class="line">  template = <span class="string">'echo(`'</span> + template + <span class="string">'`);'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> script =</span><br><span class="line">  <span class="string">`(function parse(data)&#123;</span></span><br><span class="line"><span class="string">    let output = "";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    function echo(html)&#123;</span></span><br><span class="line"><span class="string">      output += html;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    <span class="subst">$&#123; template &#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    return output;</span></span><br><span class="line"><span class="string">  &#125;)`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> script;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> compile函数的用法如下。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> parse = <span class="built_in">eval</span>(compile(template));</span><br><span class="line">div.innerHTML = parse(&#123; <span class="attr">supplies</span>: [ <span class="string">"broom"</span>, <span class="string">"mop"</span>, <span class="string">"cleaner"</span> ] &#125;);</span><br><span class="line"><span class="comment">//   &lt;ul&gt;</span></span><br><span class="line"><span class="comment">//     &lt;li&gt;broom&lt;/li&gt;</span></span><br><span class="line"><span class="comment">//     &lt;li&gt;mop&lt;/li&gt;</span></span><br><span class="line"><span class="comment">//     &lt;li&gt;cleaner&lt;/li&gt;</span></span><br><span class="line"><span class="comment">//   &lt;/ul&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="我的总结"><a href="#我的总结" class="headerlink" title="我的总结"></a>我的总结</h3><p>1 字符串的遍历器接口</p>
+<ul>
+<li><code>for (let i of ...)</code>除了遍历字符串，这个遍历器最大的优点是可以识别大于0xFFFF的码点，传统的for循环无法识别这样的码点</li>
+</ul>
+<p>2 JSON.stringify() 的改造</p>
+
+        </div>
+        
+            <ul class="post-copyright" style='display:none'>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">字符串的扩展</a></li>
+            <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/</a></li>
+            <li><strong>发布时间：</strong>2020-05-14</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">循环遍历</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">
+                <span class="level-item">字符串函数大全</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/';
+        this.page.identifier = '2020/05/14/前端基础/es6/字符串的扩展/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Garmin954">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Garmin954
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        garminzjm.@gmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>九州云间</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        23
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/garmin954" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#字符的-Unicode-表示法">
+        <span class="has-mr-6">1</span>
+        <span>字符的 Unicode 表示法</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串的遍历器接口">
+        <span class="has-mr-6">2</span>
+        <span>字符串的遍历器接口</span>
+        </a></li><li>
+        <a class="is-flex" href="#直接输入-U-2028-和-U-2029">
+        <span class="has-mr-6">3</span>
+        <span>直接输入 U+2028 和 U+2029</span>
+        </a></li><li>
+        <a class="is-flex" href="#JSON-stringify-的改造">
+        <span class="has-mr-6">4</span>
+        <span>JSON.stringify() 的改造</span>
+        </a></li><li>
+        <a class="is-flex" href="#模板字符串">
+        <span class="has-mr-6">5</span>
+        <span>模板字符串</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例：模板编译">
+        <span class="has-mr-6">6</span>
+        <span>实例：模板编译</span>
+        </a></li><li>
+        <a class="is-flex" href="#我的总结">
+        <span class="has-mr-6">7</span>
+        <span>我的总结</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="字符串的扩展" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Garmin&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://garmin954.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
