@@ -613,7 +613,7 @@ figure.highlight .section {
   font-weight: bold;
 }
 .article h1:before {
-  content: '#';
+  content: '';
   color: #3eaf7c;
   margin-right: 5px;
 }
