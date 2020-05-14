@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>字符串函数大全 - Garmin Notes</title>
+
+
+    <meta name="description" content="字符串属性 [waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串函数大全">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/index.html">
+<meta property="og:site_name" content="Garmin Notes">
+<meta property="og:description" content="字符串属性 [waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-14T01:09:58.343Z">
+<meta property="article:modified_time" content="2020-05-09T14:38:41.773Z">
+<meta property="article:author" content="Garmin">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="字符串函数大全" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>字符串函数大全
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-14T01:09:58.343Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 368 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><blockquote>
+<p>[waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><p><strong>返回特定位置的字符(charAt)</strong><br><code>String.prototype.charAt()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.charAt(<span class="number">2</span>); <span class="comment">// r</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>返回表示给定索引的字符的Unicode的值</strong><br><code>String.prototype.charCodeAt()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.charCodeAt(<span class="number">2</span>); <span class="comment">// 114</span></span><br></pre></td></tr></table></figure>
+<p><strong>返回使用UTF-16编码的给定位置的值的非负整数</strong><br><code>String.prototype.codePointAt()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.codePointAt(<span class="number">2</span>); <span class="comment">// 114</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>连接两个字符串文本，并返回一个新的字符串</strong><br><code>String.prototype.concat()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">'garmin'</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">' javascript'</span>;</span><br><span class="line"></span><br><span class="line">str1.concat(str2); <span class="comment">// garmin javascript</span></span><br></pre></td></tr></table></figure>
+<p><strong>判断一个字符串里是否包含其他字符串</strong><br><code>String.prototype.includes()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.includes(<span class="string">'g'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><strong>判断一个字符串的是否以给定字符串结尾，结果返回布尔值</strong><br><code>String.prototype.endsWith()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.endsWith(<span class="string">'n'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><strong>从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1</strong><br><code>String.prototype.indexOf()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.indexOf(<span class="string">'g'</span>); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>lastIndexOf</p>
+</blockquote>
+<p><strong>返回一个数字表示是否引用字符串在排序中位于比较字符串的前面，后面，或者二者相同</strong><br><code>String.prototype.localeCompare()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.localeCompare(<span class="string">'g'</span>); <span class="comment">// 1</span></span><br><span class="line">str.localeCompare(<span class="string">','</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用正则表达式与字符串相比较。</strong><br><code>String.prototype.match()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'What is garmin'</span>;</span><br><span class="line">str.match(<span class="string">'garmin'</span>); <span class="comment">// ['garmin']</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>返回调用字符串值的Unicode标准化形式</strong><br><code>String.prototype.normalize()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'What is garmin'</span>;</span><br><span class="line">str.normalize(); <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="我的总结"><a href="#我的总结" class="headerlink" title="我的总结"></a>我的总结</h3>
+        </div>
+        
+            <ul class="post-copyright" style='display:none'>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">字符串函数大全</a></li>
+            <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">http://garmin954.github.io/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</a></li>
+            <li><strong>发布时间：</strong>2020-05-14</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">字符串的扩展</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/14/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+                <span class="level-item">变量的解构与赋值</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fc010ebda507ba7e8ecc',
+        clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
+        id: 'd6fe1d0be6347b8ef2427fa629c04485',
+        repo: 'garmin954.github.io',
+        owner: 'garmin954',
+        admin: ["garmin954"],
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Garmin954">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Garmin954
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        garminzjm.@gmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>九州云间</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        23
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/garmin954" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#字符串属性">
+        <span class="has-mr-6">1</span>
+        <span>字符串属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串方法">
+        <span class="has-mr-6">2</span>
+        <span>字符串方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#我的总结">
+        <span class="has-mr-6">3</span>
+        <span>我的总结</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="字符串函数大全" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Garmin&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://garmin954.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

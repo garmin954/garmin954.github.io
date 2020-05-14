@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Jwt-Auth实现API用户认证、刷新令牌 - Garmin Notes</title>
+
+
+    <meta name="description" content="概述：JWT： JWT（JSON Web Token）是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。一个JWT实际上就是一个字符串，它由三部分组成，头部、载荷与签名。更详细讲解地址：https:&#x2F;&#x2F;laravelacademy.org&#x2F;post&#x2F;3640.html 应用场景：前后端分离的项目原理：http协议是无状态的，当项目需要用户保存在线时就需要一种介质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jwt-Auth实现API用户认证、刷新令牌">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/05/php/laravel/%E6%9D%83%E9%99%90/%E4%BD%BF%E7%94%A8%20Jwt-Auth%20%E5%AE%9E%E7%8E%B0%20API%20%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E3%80%81%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C/index.html">
+<meta property="og:site_name" content="Garmin Notes">
+<meta property="og:description" content="概述：JWT： JWT（JSON Web Token）是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。一个JWT实际上就是一个字符串，它由三部分组成，头部、载荷与签名。更详细讲解地址：https:&#x2F;&#x2F;laravelacademy.org&#x2F;post&#x2F;3640.html 应用场景：前后端分离的项目原理：http协议是无状态的，当项目需要用户保存在线时就需要一种介质">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-05T13:15:57.000Z">
+<meta property="article:modified_time" content="2020-05-09T14:38:41.768Z">
+<meta property="article:author" content="Garmin">
+<meta property="article:tag" content="auth">
+<meta property="article:tag" content="jwt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Jwt-Auth实现API用户认证、刷新令牌" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Jwt-Auth实现API用户认证、刷新令牌
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-05T13:15:57.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-05</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-09T14:38:41.768Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-09</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/laravel/">laravel</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/laravel/auth/">auth</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    6 分钟 读完 (大约 847 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><p><strong>JWT</strong>： JWT（JSON Web Token）是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。一个JWT实际上就是一个字符串，它由三部分组成，头部、载荷与签名。<br>更详细讲解地址：<a href="https://laravelacademy.org/post/3640.html">https://laravelacademy.org/post/3640.html</a></p>
+<p><strong>应用场景</strong>：前后端分离的项目<br><strong>原理</strong>：<code>http</code>协议是无状态的，当项目需要用户保存在线时就需要一种介质来保持</p>
+<a id="more"></a>
+
+<hr>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="自定义认证中间件"><a href="#自定义认证中间件" class="headerlink" title="自定义认证中间件"></a>自定义认证中间件</h4><p>实现效果：提供账号密码前来登录。如果登录成功，那么我会给前端颁发一个 <code>access_token</code> ，设置在 <code>header</code> 中以请求需要用户认证的路由。<br>如果用户的令牌如果过期了，可以暂时通过此次请求，并在此次请求中刷新该用户的 <code>access_token</code>，最后在响应头中将新的 <code>access_token</code> 返回给前端，这样子可以无痛的刷新 <code>access_token</code>，用户可以获得一个很良好的体验，所以开始动手写代码。</p>
+<p>执行如下命令以新建一个中间件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:middleware RefreshToken</span><br></pre></td></tr></table></figure>
+
+<p>中间件app\Http\Middleware\RefreshToken.php代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Middleware</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Auth</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Closure</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Exceptions</span>\<span class="title">JWTException</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Http</span>\<span class="title">Middleware</span>\<span class="title">BaseMiddleware</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Exceptions</span>\<span class="title">TokenExpiredException</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Symfony</span>\<span class="title">Component</span>\<span class="title">HttpKernel</span>\<span class="title">Exception</span>\<span class="title">UnauthorizedHttpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意，我们要继承的是 jwt 的 BaseMiddleware</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RefreshToken</span> <span class="keyword">extends</span> <span class="title">BaseMiddleware</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Closure $next</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|mixed</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> JWTException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 检查此次请求中是否带有 token，如果没有则抛出异常。</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;checkForToken($request);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 try 包裹，以捕捉 token 过期所抛出的 TokenExpiredException  异常</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 检测用户的登录状态，如果正常则通过</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;auth-&gt;parseToken()-&gt;authenticate()) &#123;</span><br><span class="line">                <span class="keyword">return</span> $next($request);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UnauthorizedHttpException(<span class="string">'jwt-auth'</span>, <span class="string">'未登录'</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (TokenExpiredException $exception) &#123;</span><br><span class="line">            <span class="comment">// 此处捕获到了 token 过期所抛出的 TokenExpiredException 异常，我们在这里需要做的是刷新该用户的 token 并将它添加到响应头中</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 刷新用户的 token</span></span><br><span class="line">                $token = <span class="keyword">$this</span>-&gt;auth-&gt;refresh();</span><br><span class="line">                <span class="comment">// 使用一次性登录以保证此次请求的成功</span></span><br><span class="line">                Auth::guard(<span class="string">'api'</span>)-&gt;onceUsingId(<span class="keyword">$this</span>-&gt;auth-&gt;manager()-&gt;getPayloadFactory()-&gt;buildClaimsCollection()-&gt;toPlainArray()[<span class="string">'sub'</span>]);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (JWTException $exception) &#123;</span><br><span class="line">                <span class="comment">// 如果捕获到此异常，即代表 refresh 也过期了，用户无法刷新令牌，需要重新登录。</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> UnauthorizedHttpException(<span class="string">'jwt-auth'</span>, $exception-&gt;getMessage());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在响应头中返回新的 token</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;setAuthenticationHeader($next($request), $token);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们注册一下中间件，文件位置app\Http\Kernel.php在路由处会使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $routeMiddleware = [</span><br><span class="line">        <span class="string">'refresh'</span> =&gt; \App\Http\Middleware\RefreshToken::class,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>更新异常处理的 Handler</p>
+<p>由于我们构建的是 api 服务，所以我们需要更新一下 <code>app/Exceptions/Handler.php</code> 中的 <code>render</code>方法，自定义处理一些异常。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Exceptions</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Exception</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Exceptions</span>\<span class="title">Handler</span> <span class="title">as</span> <span class="title">ExceptionHandler</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Validation</span>\<span class="title">ValidationException</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Symfony</span>\<span class="title">Component</span>\<span class="title">HttpKernel</span>\<span class="title">Exception</span>\<span class="title">UnauthorizedHttpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handler</span> <span class="keyword">extends</span> <span class="title">ExceptionHandler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Render an exception into an HTTP response.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  \Illuminate\Http\Request $request</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  \Exception $exception</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> \Illuminate\Http\Response</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">render</span><span class="params">($request, Exception $exception)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="comment">// 参数验证错误的异常，我们需要返回 400 的 http code 和一句错误信息</span></span><br><span class="line">       <span class="keyword">if</span> ($exception <span class="keyword">instanceof</span> ValidationException) &#123;</span><br><span class="line">           <span class="keyword">return</span> response([<span class="string">'error'</span> =&gt; array_first(array_collapse($exception-&gt;errors()))], <span class="number">400</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 用户认证的异常，我们需要返回 401 的 http code 和错误信息</span></span><br><span class="line">       <span class="keyword">if</span> ($exception <span class="keyword">instanceof</span> UnauthorizedHttpException) &#123;</span><br><span class="line">           <span class="keyword">return</span> response($exception-&gt;getMessage(), <span class="number">401</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">parent</span>::render($request, $exception);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright" style='display:none'>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/05/php/laravel/%E6%9D%83%E9%99%90/%E4%BD%BF%E7%94%A8%20Jwt-Auth%20%E5%AE%9E%E7%8E%B0%20API%20%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E3%80%81%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C/">Jwt-Auth实现API用户认证、刷新令牌</a></li>
+            <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/05/php/laravel/%E6%9D%83%E9%99%90/%E4%BD%BF%E7%94%A8%20Jwt-Auth%20%E5%AE%9E%E7%8E%B0%20API%20%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E3%80%81%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C/">http://garmin954.github.io/2020/05/05/php/laravel/%E6%9D%83%E9%99%90/%E4%BD%BF%E7%94%A8%20Jwt-Auth%20%E5%AE%9E%E7%8E%B0%20API%20%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E3%80%81%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C/</a></li>
+            <li><strong>发布时间：</strong>2020-05-05</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/auth/" rel="tag">auth</a>,&nbsp;<a class="has-link-grey -link" href="/tags/jwt/" rel="tag">jwt</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/06/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/this%E6%8C%87%E9%92%88%E6%8C%87%E5%90%91/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">彻底理解this指向</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/30/articles/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E5%89%8D%E7%AB%AF/">
+                <span class="level-item">学习计划-前端</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fc010ebda507ba7e8ecc',
+        clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
+        id: 'd6fe1d0be6347b8ef2427fa629c04485',
+        repo: 'garmin954.github.io',
+        owner: 'garmin954',
+        admin: ["garmin954"],
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Garmin954">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Garmin954
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        garminzjm.@gmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>九州云间</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        23
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/garmin954" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#概述：">
+        <span class="has-mr-6">1</span>
+        <span>概述：</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">2</span>
+        <span>使用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#自定义认证中间件">
+        <span class="has-mr-6">2.1</span>
+        <span>自定义认证中间件</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Jwt-Auth实现API用户认证、刷新令牌" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Garmin&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://garmin954.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
