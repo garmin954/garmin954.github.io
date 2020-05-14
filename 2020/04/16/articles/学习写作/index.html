@@ -243,23 +243,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'http://garmin954.github.io/2020/04/16/articles/%E5%AD%A6%E4%B9%A0%E5%86%99%E4%BD%9C/';
-        this.page.identifier = '2020/04/16/articles/学习写作/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    var gitalk = new Gitalk({
+        clientID: 'fc010ebda507ba7e8ecc',
+        clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
+        id: '8881f75da9f09637a7eb0d22e77dfa3c',
+        repo: 'Some-of-Your-GitHub-Repo',
+        owner: 'Garmin-Notes',
+        admin: ["Garmin-Notes"],
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
     </div>
 </div>
 
