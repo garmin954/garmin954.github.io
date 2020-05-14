@@ -662,3 +662,11 @@ figure.highlight .section {
   background: transparent;
   overflow-wrap: break-word;
 }
+blockquote {
+  background-color: #fff;
+  padding: 0px;
+  margin: 2rem 0;
+}
+figure.highlight .highlight-body {
+  background-color: #d7f7e2;
+}
