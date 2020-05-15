@@ -611,6 +611,12 @@ figure.highlight .section {
   content: counter(section) "." counter(sub-section) "." counter(composite) " ";
   counter-increment: composite;
 }
+。article >.title {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #3bad91;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 /* ---做文章标题--- */
 .article h1 {
   font-size: 2.05em;
