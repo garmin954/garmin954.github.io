@@ -611,7 +611,7 @@ figure.highlight .section {
   content: counter(section) "." counter(sub-section) "." counter(composite) " ";
   counter-increment: composite;
 }
-。article >.title {
+.article > .title {
   padding-bottom: 15px;
   border-bottom: 2px solid #3bad91;
   margin-bottom: 20px;
