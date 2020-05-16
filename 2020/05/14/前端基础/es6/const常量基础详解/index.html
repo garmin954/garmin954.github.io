@@ -335,7 +335,7 @@
     var gitalk = new Gitalk({
         clientID: 'fc010ebda507ba7e8ecc',
         clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
-        id: 'gitalk',
+        id: decodeURI(window.location.pathname),
         repo: 'garmin954.github.io',
         owner: 'garmin954',
         admin: ["garmin954"],
@@ -344,6 +344,7 @@
     })
     gitalk.render('comment-container')
 </script>
+
 
     </div>
 </div>
