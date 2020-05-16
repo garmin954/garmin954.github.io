@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>图片处理 intervention/image - Garmin Notes</title>
+
+
+    <meta name="description" content="记录laravel基础的配置部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片处理 intervention&#x2F;image">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/16/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="Garmin Notes">
+<meta property="og:description" content="记录laravel基础的配置部署">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-16T13:09:34.000Z">
+<meta property="article:modified_time" content="2020-05-16T00:48:41.773Z">
+<meta property="article:author" content="Garmin">
+<meta property="article:tag" content="laravel扩展包">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="图片处理 intervention/image" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>图片处理 intervention/image
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-16T13:09:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/php/">php</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/php/laravel/">laravel</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 474 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>记录<code>laravel</code>基础的配置部署</p>
+<a id="more"></a>
+
+
+<h3 id="作用-amp-功能"><a href="#作用-amp-功能" class="headerlink" title="作用&amp;功能"></a>作用&amp;功能</h3><p>使用 <a href="https://github.com/Intervention/image">Intervention/image</a> 扩展包来处理图片裁切的逻辑</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Composer-安装"><a href="#Composer-安装" class="headerlink" title="Composer 安装"></a>Composer 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require intervention&#x2F;image</span><br></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider&#x3D;&quot;Intervention\Image\ImageServiceProviderLaravel5&quot;</span><br></pre></td></tr></table></figure>
+<p>打开 config/image.php 文件可以看到只有一个驱动器的选项，支持的值有 GD 库 和 ImageMagic：</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>]</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Handlers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Image</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageUploadHandler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $allowed_ext = [<span class="string">"png"</span>, <span class="string">"jpg"</span>, <span class="string">"gif"</span>, <span class="string">'jpeg'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">($file, $folder, $file_prefix, $max_width = false)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 构建存储的文件夹规则，值如：uploads/images/avatars/201709/21/</span></span><br><span class="line">        <span class="comment">// 文件夹切割能让查找效率更高。</span></span><br><span class="line">        $folder_name = <span class="string">"uploads/images/$folder/"</span> . date(<span class="string">"Ym/d"</span>, time());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 文件具体存储的物理路径，`public_path()` 获取的是 `public` 文件夹的物理路径。</span></span><br><span class="line">        <span class="comment">// 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/</span></span><br><span class="line">        $upload_path = public_path() . <span class="string">'/'</span> . $folder_name;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取文件的后缀名，因图片从剪贴板里黏贴时后缀名为空，所以此处确保后缀一直存在</span></span><br><span class="line">        $extension = strtolower($file-&gt;getClientOriginalExtension()) ?: <span class="string">'png'</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 拼接文件名，加前缀是为了增加辨析度，前缀可以是相关数据模型的 ID</span></span><br><span class="line">        <span class="comment">// 值如：1_1493521050_7BVc9v9ujP.png</span></span><br><span class="line">        $filename = $file_prefix . <span class="string">'_'</span> . time() . <span class="string">'_'</span> . str_random(<span class="number">10</span>) . <span class="string">'.'</span> . $extension;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果上传的不是图片将终止操作</span></span><br><span class="line">        <span class="keyword">if</span> ( ! in_array($extension, <span class="keyword">$this</span>-&gt;allowed_ext)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将图片移动到我们的目标存储路径中</span></span><br><span class="line">        $file-&gt;move($upload_path, $filename);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果限制了图片宽度，就进行裁剪</span></span><br><span class="line">        <span class="keyword">if</span> ($max_width &amp;&amp; $extension != <span class="string">'gif'</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 此类中封装的函数，用于裁剪图片</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;reduceSize($upload_path . <span class="string">'/'</span> . $filename, $max_width);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'path'</span> =&gt; config(<span class="string">'app.url'</span>) . <span class="string">"/$folder_name/$filename"</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">reduceSize</span><span class="params">($file_path, $max_width)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 先实例化，传参是文件的磁盘物理路径</span></span><br><span class="line">        $image = Image::make($file_path);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进行大小调整的操作</span></span><br><span class="line">        $image-&gt;resize($max_width, <span class="keyword">null</span>, <span class="function"><span class="keyword">function</span> <span class="params">($constraint)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 设定宽度是 $max_width，高度等比例双方缩放</span></span><br><span class="line">            $constraint-&gt;aspectRatio();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 防止裁图时图片尺寸变大</span></span><br><span class="line">            $constraint-&gt;upsize();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对图片修改后进行保存</span></span><br><span class="line">        $image-&gt;save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3>
+        </div>
+        
+            <ul class="post-copyright" style='display:none'>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/16/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E9%83%A8%E7%BD%B2/">图片处理 intervention/image</a></li>
+            <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/16/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E9%83%A8%E7%BD%B2/">http://garmin954.github.io/2020/05/16/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E9%83%A8%E7%BD%B2/</a></li>
+            <li><strong>发布时间：</strong>2020-05-16</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/laravel%E6%89%A9%E5%B1%95%E5%8C%85/" rel="tag">laravel扩展包</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/20120/05/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E4%BE%8B/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%95%86%E5%9F%8E/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%B5%81%E7%A8%8B/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">购物车实现流程</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/15/php/%E5%B7%A5%E5%85%B7/php%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84%E6%B3%A8%E9%87%8A/">
+                <span class="level-item">php/工具/php反射获取类和方法中的注释</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fc010ebda507ba7e8ecc',
+        clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
+        id: 'gitalk',
+        repo: 'garmin954.github.io',
+        owner: 'garmin954',
+        admin: ["garmin954"],
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Garmin954">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Garmin954
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        garminzjm.@gmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>九州云间</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        31
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        24
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/garmin954" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#作用-amp-功能">
+        <span class="has-mr-6">1</span>
+        <span>作用&功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">2</span>
+        <span>安装</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Composer-安装">
+        <span class="has-mr-6">2.1</span>
+        <span>Composer 安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#配置">
+        <span class="has-mr-6">2.2</span>
+        <span>配置</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">3</span>
+        <span>使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#拓展">
+        <span class="has-mr-6">4</span>
+        <span>拓展</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" style="display:flex">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="图片处理 intervention/image" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Garmin&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://garmin954.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
