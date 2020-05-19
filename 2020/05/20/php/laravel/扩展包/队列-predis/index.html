@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>中文转英文-PinYin - Garmin Notes</title>
+
+
+    <meta name="description" content="队列允许你异步执行消耗时间的任务，比如请求一个 API 并等待返回的结果。这样可以有效的降低请求响应的时间。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中文转英文-PinYin">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/20/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%9F%E5%88%97-predis/index.html">
+<meta property="og:site_name" content="Garmin Notes">
+<meta property="og:description" content="队列允许你异步执行消耗时间的任务，比如请求一个 API 并等待返回的结果。这样可以有效的降低请求响应的时间。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-20T13:09:34.000Z">
+<meta property="article:modified_time" content="2020-05-19T23:48:15.008Z">
+<meta property="article:author" content="Garmin">
+<meta property="article:tag" content="laravel扩展包">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="中文转英文-PinYin" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>中文转英文-PinYin
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-20T13:09:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-20</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/php/">php</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/php/laravel/">laravel</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 986 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>队列允许你异步执行消耗时间的任务，比如请求一个 API 并等待返回的结果。这样可以有效的降低请求响应的时间。</p>
+<a id="more"></a>
+
+
+<h3 id="作用-amp-功能"><a href="#作用-amp-功能" class="headerlink" title="作用&amp;功能"></a>作用&amp;功能</h3><p>队列允许你异步执行消耗时间的任务，比如请求一个 API 并等待返回的结果。这样可以有效的降低请求响应的时间。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Composer-安装"><a href="#Composer-安装" class="headerlink" title="Composer 安装"></a>Composer 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require &quot;predis&#x2F;predis:~1.0&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p> 接下来我们还需要修改环境变量 QUEUE_DRIVER 的值为 redis：</p>
+<p> .env</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QUEUE_DRIVER&#x3D;redis</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>有时候队列中的任务会失败。Laravel 内置了一个方便的方式来指定任务重试的最大次数。当任务超出这个重试次数后，<br>它就会被插入到 failed_jobs 数据表里面。我们可以使用 queue:failed-table 命令来创建 failed_jobs<br>表的迁移文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan queue:failed-table</span><br></pre></td></tr></table></figure>
+
+<p>接着使用 migrate Artisan 命令生成 failed_jobs 表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+<h4 id="生成任务类"><a href="#生成任务类" class="headerlink" title="生成任务类"></a>生成任务类</h4><p>使用以下 Artisan 命令来生成一个新的队列任务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:job TranslateSlug</span><br></pre></td></tr></table></figure>
+<p>该命令会在 app/Jobs 目录下生成一个新的类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">app&#x2F;Jobs&#x2F;TranslateSlug.php</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace App\Jobs;</span><br><span class="line"></span><br><span class="line">use Illuminate\Bus\Queueable;</span><br><span class="line">use Illuminate\Queue\SerializesModels;</span><br><span class="line">use Illuminate\Queue\InteractsWithQueue;</span><br><span class="line">use Illuminate\Contracts\Queue\ShouldQueue;</span><br><span class="line">use Illuminate\Foundation\Bus\Dispatchable;</span><br><span class="line"></span><br><span class="line">use App\Models\Topic;</span><br><span class="line">use App\Handlers\SlugTranslateHandler;</span><br><span class="line"></span><br><span class="line">class TranslateSlug implements ShouldQueue</span><br><span class="line">&#123;</span><br><span class="line">    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;</span><br><span class="line"></span><br><span class="line">    protected $topic;</span><br><span class="line"></span><br><span class="line">    public function __construct(Topic $topic)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; 队列任务构造器中接收了 Eloquent 模型，将会只序列化模型的 ID</span><br><span class="line">        $this-&gt;topic &#x3D; $topic;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function handle()</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; 请求百度 API 接口进行翻译</span><br><span class="line">        $slug &#x3D; app(SlugTranslateHandler::class)-&gt;translate($this-&gt;topic-&gt;title);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 为了避免模型监控器死循环调用，我们使用 DB 类直接对数据库进行操作</span><br><span class="line">        \DB::table(&#39;topics&#39;)-&gt;where(&#39;id&#39;, $this-&gt;topic-&gt;id)-&gt;update([&#39;slug&#39; &#x3D;&gt; $slug]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该类实现了 Illuminate\Contracts\Queue\ShouldQueue 接口，该接口表明 Laravel 应该将该任务添加到后台的任务队列中，而不是同步执行。</p>
+<p>引入了 SerializesModels trait，Eloquent 模型会被优雅的序列化和反序列化。队列任务构造器中接收了 Eloquent 模型，将会只序列化模型的 ID。这样子在任务执行时，队列系统会从数据库中自动的根据 ID 检索出模型实例。这样可以避免序列化完整的模型可能在队列中出现的问题。</p>
+<p>handle 方法会在队列任务执行时被调用。值得注意的是，我们可以在任务的 handle 方法中可以使用类型提示来进行依赖的注入。Laravel 的服务容器会自动的将这些依赖注入进去，与控制器方法类似。</p>
+<p><u>还有一点需要注意，我们将会在模型监控器中分发任务，任务中要避免使用 Eloquent 模型接口调用，如：create(), update(), save() 等操作。否则会陷入调用死循环 —— 模型监控器分发任务，任务触发模型监控器，模型监控器再次分发任务，任务再次触发模型监控器…. 死循环。在这种情况下，使用 DB 类直接对数据库进行操作即可。<br></u></p>
+<h4 id="任务分发"><a href="#任务分发" class="headerlink" title="任务分发"></a>任务分发</h4><p>接下来我们要修改 Topic 模型监控器，将 Slug 翻译的调用修改为队列执行的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">app&#x2F;Observers&#x2F;TopicObserver.php</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace App\Observers;</span><br><span class="line"></span><br><span class="line">use App\Models\Topic;</span><br><span class="line">use App\Jobs\TranslateSlug;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; creating, created, updating, updated, saving,</span><br><span class="line">&#x2F;&#x2F; saved,  deleting, deleted, restoring, restored</span><br><span class="line"></span><br><span class="line">class TopicObserver</span><br><span class="line">&#123;</span><br><span class="line">    public function saving(Topic $topic)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; XSS 过滤</span><br><span class="line">        $topic-&gt;body &#x3D; clean($topic-&gt;body, &#39;user_topic_body&#39;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 生成话题摘录</span><br><span class="line">        $topic-&gt;excerpt &#x3D; make_excerpt($topic-&gt;body);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 如 slug 字段无内容，即使用翻译器对 title 进行翻译</span><br><span class="line">        if ( ! $topic-&gt;slug) &#123;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 推送任务到队列</span><br><span class="line">            dispatch(new TranslateSlug($topic));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h4><p>开始之前，我们需要在命令行启动队列系统，队列在启动完成后会进入监听状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan queue:listen</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+            <ul class="post-copyright" style='display:none'>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/20/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%9F%E5%88%97-predis/">中文转英文-PinYin</a></li>
+            <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/20/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%9F%E5%88%97-predis/">http://garmin954.github.io/2020/05/20/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%9F%E5%88%97-predis/</a></li>
+            <li><strong>发布时间：</strong>2020-05-20</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/laravel%E6%89%A9%E5%B1%95%E5%8C%85/" rel="tag">laravel扩展包</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/20/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%9F%E5%88%97%E7%9B%91%E6%8E%A7%E5%99%A8-Horizon/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">中文转英文-PinYin</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/19/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/Http%E8%AF%B7%E6%B1%82-Guzzle/">
+                <span class="level-item">Http请求-Guzzle</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fc010ebda507ba7e8ecc',
+        clientSecret: '84139412c679cf140a24be1b98b7371a63df5093',
+        id: decodeURI(window.location.pathname),
+        repo: 'garmin954.github.io',
+        owner: 'garmin954',
+        admin: ["garmin954"],
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-96x96 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Garmin954">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Garmin954
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        garminzjm.@gmail.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>九州云间</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        39
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        24
+                    </p>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/garmin954" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#作用-amp-功能">
+        <span class="has-mr-6">1</span>
+        <span>作用&功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">2</span>
+        <span>安装</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Composer-安装">
+        <span class="has-mr-6">2.1</span>
+        <span>Composer 安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#配置">
+        <span class="has-mr-6">2.2</span>
+        <span>配置</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">3</span>
+        <span>使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#拓展">
+        <span class="has-mr-6">4</span>
+        <span>拓展</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#生成任务类">
+        <span class="has-mr-6">4.1</span>
+        <span>生成任务类</span>
+        </a></li><li>
+        <a class="is-flex" href="#任务分发">
+        <span class="has-mr-6">4.2</span>
+        <span>任务分发</span>
+        </a></li><li>
+        <a class="is-flex" href="#开始测试">
+        <span class="has-mr-6">4.3</span>
+        <span>开始测试</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" style="display:flex">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="中文转英文-PinYin" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Garmin&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="AlphaLxy GitHub" href="https://www.github.com/garmin954">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://garmin954.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
