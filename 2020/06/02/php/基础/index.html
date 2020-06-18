@@ -7,23 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>字符串函数大全 - Garmin Notes</title>
+<title>php/基础 - Garmin Notes</title>
 
 
-    <meta name="description" content="字符串属性 [waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。">
+    <meta name="description" content="###　用于防SQL注入的几个函数  addslashes()在预定义字符前面加反斜线   单引号（’） 双引号（”） 反斜杠（\） NULL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符串函数大全">
-<meta property="og:url" content="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/index.html">
+<meta property="og:title" content="php&#x2F;基础">
+<meta property="og:url" content="http://garmin954.github.io/2020/06/02/php/%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Garmin Notes">
-<meta property="og:description" content="字符串属性 [waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。">
+<meta property="og:description" content="###　用于防SQL注入的几个函数  addslashes()在预定义字符前面加反斜线   单引号（’） 双引号（”） 反斜杠（\） NULL">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-05-09T14:38:41.773Z">
-<meta property="article:modified_time" content="2020-05-09T14:38:41.773Z">
+<meta property="article:published_time" content="2020-06-02T04:15:47.961Z">
+<meta property="article:modified_time" content="2020-06-02T04:15:47.961Z">
 <meta property="article:author" content="Garmin">
-<meta property="article:tag" content="es6">
-<meta property="article:tag" content="js">
-<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="Garmin 远路 YuanLu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="字符串函数大全" height="28">
+                <img src="/images/logo.svg" alt="php/基础" height="28">
             
             </a>
         </div>
@@ -142,26 +140,21 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>字符串函数大全
+                <i class="fas fa-angle-double-right"></i>php/基础
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-09T14:38:41.773Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
+                <time class="level-item has-text-grey" datetime="2020-06-02T04:15:47.961Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-06-02</time>
                 
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/js/">js</a>
-                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 368 个字)
+                    几秒 读完 (大约 41 个字)
                 </span>
                 
                 
@@ -174,62 +167,28 @@
         </div>
         
         <div class="content">
-            <h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><blockquote>
-<p>[waring] 所有 String 的实例都继承自 String.prototype. 任何String.prototype上的改变都会影响到所有的 String 实例。</p>
-</blockquote>
-<a id="more"></a>
+            <p>###　用于防SQL注入的几个函数</p>
+<ol>
+<li>addslashes()<br>在预定义字符前面加反斜线</li>
+</ol>
+<ul>
+<li>单引号（’）</li>
+<li>双引号（”）</li>
+<li>反斜杠（\）</li>
+<li>NULL</li>
+</ul>
 
-<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><p><strong>返回特定位置的字符(charAt)</strong><br><code>String.prototype.charAt()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.charAt(<span class="number">2</span>); <span class="comment">// r</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>返回表示给定索引的字符的Unicode的值</strong><br><code>String.prototype.charCodeAt()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.charCodeAt(<span class="number">2</span>); <span class="comment">// 114</span></span><br></pre></td></tr></table></figure>
-<p><strong>返回使用UTF-16编码的给定位置的值的非负整数</strong><br><code>String.prototype.codePointAt()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.codePointAt(<span class="number">2</span>); <span class="comment">// 114</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>连接两个字符串文本，并返回一个新的字符串</strong><br><code>String.prototype.concat()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">'garmin'</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">' javascript'</span>;</span><br><span class="line"></span><br><span class="line">str1.concat(str2); <span class="comment">// garmin javascript</span></span><br></pre></td></tr></table></figure>
-<p><strong>判断一个字符串里是否包含其他字符串</strong><br><code>String.prototype.includes()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.includes(<span class="string">'g'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p><strong>判断一个字符串的是否以给定字符串结尾，结果返回布尔值</strong><br><code>String.prototype.endsWith()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.endsWith(<span class="string">'n'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p><strong>从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1</strong><br><code>String.prototype.indexOf()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.indexOf(<span class="string">'g'</span>); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>lastIndexOf</p>
-</blockquote>
-<p><strong>返回一个数字表示是否引用字符串在排序中位于比较字符串的前面，后面，或者二者相同</strong><br><code>String.prototype.localeCompare()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'garmin'</span>;</span><br><span class="line">str.localeCompare(<span class="string">'g'</span>); <span class="comment">// 1</span></span><br><span class="line">str.localeCompare(<span class="string">','</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用正则表达式与字符串相比较。</strong><br><code>String.prototype.match()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'What is garmin'</span>;</span><br><span class="line">str.match(<span class="string">'garmin'</span>); <span class="comment">// ['garmin']</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>返回调用字符串值的Unicode标准化形式</strong><br><code>String.prototype.normalize()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'What is garmin'</span>;</span><br><span class="line">str.normalize(); <span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="我的总结"><a href="#我的总结" class="headerlink" title="我的总结"></a>我的总结</h3>
         </div>
         
             <ul class="post-copyright" style='display:none'>
-            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">字符串函数大全</a></li>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/06/02/php/%E5%9F%BA%E7%A1%80/">php/基础</a></li>
             <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
-            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</a></li>
-            <li><strong>发布时间：</strong>2020-05-09</li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/06/02/php/%E5%9F%BA%E7%A1%80/">http://garmin954.github.io/2020/06/02/php/%E5%9F%BA%E7%A1%80/</a></li>
+            <li><strong>发布时间：</strong>2020-06-02</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
-                </div>
-            </div>
-        </div>
         
         
         
@@ -244,16 +203,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/06/18/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98/%E8%AF%B7%E6%B1%82/%E4%B8%8A%E4%BC%A0base64%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">字符串的扩展</span>
+                <span class="level-item">上传base64报错问题</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E4%B8%8E%E8%B5%8B%E5%80%BC/">
-                <span class="level-item">变量的解构与赋值</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/">
+                <span class="level-item">正则</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -332,7 +291,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        42
                     </p>
                 </a>
             </div>
@@ -371,29 +330,6 @@
     
         
 
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#字符串属性">
-        <span class="has-mr-6">1</span>
-        <span>字符串属性</span>
-        </a></li><li>
-        <a class="is-flex" href="#字符串方法">
-        <span class="has-mr-6">2</span>
-        <span>字符串方法</span>
-        </a></li><li>
-        <a class="is-flex" href="#我的总结">
-        <span class="has-mr-6">3</span>
-        <span>我的总结</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
-
 
     
     
@@ -413,7 +349,7 @@
             <div class="level-start has-text-centered-mobile" style="display:flex">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="字符串函数大全" height="28">
+                    <img src="/images/logo.svg" alt="php/基础" height="28">
                 
                 </a>
                 <p class="is-size-7">

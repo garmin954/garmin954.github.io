@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>正则 - Garmin Notes</title>
+<title>权限管理-laravel-permission - Garmin Notes</title>
 
 
-    <meta name="description" content="Garmin 远路 YuanLu">
+    <meta name="description" content="Laravel-permission">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则">
-<meta property="og:url" content="http://garmin954.github.io/2020/05/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/index.html">
+<meta property="og:title" content="权限管理-laravel-permission">
+<meta property="og:url" content="http://garmin954.github.io/2020/05/24/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-laravel-permission/index.html">
 <meta property="og:site_name" content="Garmin Notes">
-<meta property="og:description" content="Garmin 远路 YuanLu">
+<meta property="og:description" content="Laravel-permission">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-05-13T13:07:01.229Z">
-<meta property="article:modified_time" content="2020-05-15T00:46:59.982Z">
+<meta property="article:published_time" content="2020-05-24T13:09:34.000Z">
+<meta property="article:modified_time" content="2020-05-24T03:45:00.620Z">
 <meta property="article:author" content="Garmin">
-<meta property="article:tag" content="正则">
+<meta property="article:tag" content="laravel扩展包">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="正则" height="28">
+                <img src="/images/logo.svg" alt="权限管理-laravel-permission" height="28">
             
             </a>
         </div>
@@ -140,20 +140,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>正则
+                <i class="fas fa-angle-double-right"></i>权限管理-laravel-permission
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-13T13:07:01.229Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-13</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-15T00:46:59.982Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-15</time>
+                <time class="level-item has-text-grey" datetime="2020-05-24T13:09:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-24</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                <a class="has-link-grey -link" href="/categories/php/">php</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/php/laravel/">laravel</a>
                 </div>
                 
                 
@@ -161,7 +159,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    2 分钟 读完 (大约 345 个字)
                 </span>
                 
                 
@@ -174,14 +172,39 @@
         </div>
         
         <div class="content">
-            
+            <p><a href="https://github.com/spatie/laravel-permission"> Laravel-permission</a>  </p>
+<a id="more"></a>
+
+
+<h3 id="作用-amp-功能"><a href="#作用-amp-功能" class="headerlink" title="作用&amp;功能"></a>作用&amp;功能</h3><p><a href="https://github.com/spatie/laravel-permission"> Laravel-permission</a>  </p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Composer-安装"><a href="#Composer-安装" class="headerlink" title="Composer 安装"></a>Composer 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require &quot;spatie&#x2F;laravel-permission:~2.7&quot;</span><br></pre></td></tr></table></figure>
+
+<p>生成数据库迁移文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider&#x3D;&quot;Spatie\Permission\PermissionServiceProvider&quot; --tag&#x3D;&quot;migrations&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p> 下图是 laravel-permission 的数据库表结构：</p>
+<p>数据表各自的作用：</p>
+<ul>
+<li>roles —— 角色的模型表；</li>
+<li>permissions —— 权限的模型表；</li>
+<li>model_has_roles —— 模型与角色的关联表，用户拥有什么角色在此表中定义，一个用户能拥有多个角色；</li>
+<li>role_has_permissions —— 角色拥有的权限关联表，如管理员拥有查看后台的权限都是在此表定义，一个角色能拥有多个权限；</li>
+<li>model_has_permissions —— 模型与权限关联表，一个模型能拥有多个权限。</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成配置信息："><a href="#生成配置信息：" class="headerlink" title="生成配置信息："></a>生成配置信息：</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider&#x3D;&quot;Spatie\Permission\PermissionServiceProvider&quot; --tag&#x3D;&quot;config&quot;</span><br></pre></td></tr></table></figure>
+
+<p> 配置信息存放于 config/permission.php ，可以打开此文件瞧一瞧，目前我们不需要做任何修改。</p>
+<h4 id="加载-HasRoles"><a href="#加载-HasRoles" class="headerlink" title="加载 HasRoles"></a>加载 HasRoles</h4><p> 我们还需在 User 中使用 laravel-permission 提供的 Trait —— HasRoles，此举能让我们获取到扩展包提供的所有权限和角色的操作方法。</p>
+<p> app/Models/User.php<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Spatie</span>\<span class="title">Permission</span>\<span class="title">Traits</span>\<span class="title">HasRoles</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasRoles</span>;</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="初始化角色和权限"><a href="#初始化角色和权限" class="headerlink" title="初始化角色和权限"></a>初始化角色和权限</h4><h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3>
         </div>
         
             <ul class="post-copyright" style='display:none'>
-            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/">正则</a></li>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/24/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-laravel-permission/">权限管理-laravel-permission</a></li>
             <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
-            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/">http://garmin954.github.io/2020/05/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/</a></li>
-            <li><strong>发布时间：</strong>2020-05-13</li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/24/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-laravel-permission/">http://garmin954.github.io/2020/05/24/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-laravel-permission/</a></li>
+            <li><strong>发布时间：</strong>2020-05-24</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -192,7 +215,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a>
+                    <a class="has-link-grey -link" href="/tags/laravel%E6%89%A9%E5%B1%95%E5%8C%85/" rel="tag">laravel扩展包</a>
                 </div>
             </div>
         </div>
@@ -210,16 +233,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/14/php/%E5%AD%A6%E4%B9%A0Laravel%E8%A7%84%E5%88%92/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/06/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E6%AD%A3%E5%88%99/%E6%AD%A3%E5%88%99/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Laravel学习规划</span>
+                <span class="level-item">正则</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">
-                <span class="level-item">es6知识点</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E5%AE%9E%E4%BE%8B/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%95%86%E5%9F%8E/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%B5%81%E7%A8%8B/">
+                <span class="level-item">购物车实现流程</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -298,7 +321,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        42
                     </p>
                 </a>
             </div>
@@ -337,6 +360,53 @@
     
         
 
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#作用-amp-功能">
+        <span class="has-mr-6">1</span>
+        <span>作用&功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">2</span>
+        <span>安装</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Composer-安装">
+        <span class="has-mr-6">2.1</span>
+        <span>Composer 安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#配置">
+        <span class="has-mr-6">2.2</span>
+        <span>配置</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">3</span>
+        <span>使用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#生成配置信息：">
+        <span class="has-mr-6">3.1</span>
+        <span>生成配置信息：</span>
+        </a></li><li>
+        <a class="is-flex" href="#加载-HasRoles">
+        <span class="has-mr-6">3.2</span>
+        <span>加载 HasRoles</span>
+        </a></li><li>
+        <a class="is-flex" href="#初始化角色和权限">
+        <span class="has-mr-6">3.3</span>
+        <span>初始化角色和权限</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#拓展">
+        <span class="has-mr-6">4</span>
+        <span>拓展</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
 
     
     
@@ -356,7 +426,7 @@
             <div class="level-start has-text-centered-mobile" style="display:flex">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="正则" height="28">
+                    <img src="/images/logo.svg" alt="权限管理-laravel-permission" height="28">
                 
                 </a>
                 <p class="is-size-7">
