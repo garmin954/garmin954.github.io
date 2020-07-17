@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>计算机网络协议 - Garmin Notes</title>
+<title>使用Crontab 执行定时任务 - Garmin Notes</title>
 
 
-    <meta name="description" content="由来：  是什么：">
+    <meta name="description" content="当数据库有需要定时清理数据，或者程序定时访问某个接口的时候可以用Crontab">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络协议">
-<meta property="og:url" content="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="使用Crontab 执行定时任务">
+<meta property="og:url" content="http://garmin954.github.io/2020/07/17/linux/%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccrontab/index.html">
 <meta property="og:site_name" content="Garmin Notes">
-<meta property="og:description" content="由来：  是什么：">
+<meta property="og:description" content="当数据库有需要定时清理数据，或者程序定时访问某个接口的时候可以用Crontab">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-05-09T14:38:41.784Z">
-<meta property="article:modified_time" content="2020-05-09T14:38:41.784Z">
+<meta property="article:published_time" content="2020-07-17T04:12:57.000Z">
+<meta property="article:modified_time" content="2020-07-17T10:01:34.302Z">
 <meta property="article:author" content="Garmin">
-<meta property="article:tag" content="Garmin 远路 YuanLu">
+<meta property="article:tag" content="定时任务">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="计算机网络协议" height="28">
+                <img src="/images/logo.svg" alt="使用Crontab 执行定时任务" height="28">
             
             </a>
         </div>
@@ -140,18 +140,20 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>计算机网络协议
+                <i class="fas fa-angle-double-right"></i>使用Crontab 执行定时任务
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-09T14:38:41.784Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
+                <time class="level-item has-text-grey" datetime="2020-07-17T04:12:57.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-07-17</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-17T10:01:34.302Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-17</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/web/">web</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -159,7 +161,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 8 个字)
+                    2 分钟 读完 (大约 251 个字)
                 </span>
                 
                 
@@ -172,21 +174,95 @@
         </div>
         
         <div class="content">
-            <p><strong>由来：</strong> </p>
-<p><strong>是什么：</strong></p>
+            <p>当数据库有需要定时清理数据，或者程序定时访问某个接口的时候可以用Crontab</p>
 <a id="more"></a>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在Linux里安装Crontab</p>
+<h4 id="ubuntu安装cron"><a href="#ubuntu安装cron" class="headerlink" title="ubuntu安装cron"></a>ubuntu安装cron</h4><ul>
+<li>安装：<code>apt-get install cron</code></li>
+<li>启动：<code>service cron start</code></li>
+<li>重启：<code>service cron restart</code></li>
+<li>停止：<code>service cron stop</code></li>
+<li>检查状态：<code>service cron status</code></li>
+<li>查询cron可用的命令：<code>service cron</code></li>
+<li>检查Cronta工具是否安装：<code>crontab -l</code></li>
+</ul>
+<h3 id="centOS安装"><a href="#centOS安装" class="headerlink" title="centOS安装"></a>centOS安装</h3><blockquote>
+<p>centOSs安装cron：（1）vixie-cron 软件包是 cron 的主程序；（2）crontabs 软件包是用来安装、卸装、或列举用来驱动 cron 守护进程的表格的程序。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install vixie-cron</span><br><span class="line">yum install crontabs</span><br></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">service crond start     &#x2F;&#x2F;启动服务</span><br><span class="line">service crond stop      &#x2F;&#x2F;关闭服务</span><br><span class="line">service crond restart   &#x2F;&#x2F;重启服务</span><br><span class="line">service crond reload    &#x2F;&#x2F;重新载入配置</span><br><span class="line">service crond status    &#x2F;&#x2F;查看crontab服务状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>格式：</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td align="center">骂</td>
+<td align="right">三弟</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>*</th>
+<th align="center">*</th>
+<th align="center">*</th>
+<th align="center">*</th>
+<th align="center">*</th>
+<th align="right">command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分</td>
+<td align="center">时</td>
+<td align="center">日</td>
+<td align="center">月</td>
+<td align="center">周</td>
+<td align="right">命令</td>
+</tr>
+</tbody></table>
 
         </div>
         
             <ul class="post-copyright" style='display:none'>
-            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">计算机网络协议</a></li>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/07/17/linux/%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccrontab/">使用Crontab 执行定时任务</a></li>
             <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
-            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</a></li>
-            <li><strong>发布时间：</strong>2020-05-09</li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/07/17/linux/%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccrontab/">http://garmin954.github.io/2020/07/17/linux/%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccrontab/</a></li>
+            <li><strong>发布时间：</strong>2020-07-17</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" rel="tag">定时任务</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -200,17 +276,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">循环遍历</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">
-                <span class="level-item">字符串的扩展</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/15/linux/%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">
+                <span class="level-item">查看系统配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -328,6 +397,33 @@
     
         
 
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">1</span>
+        <span>安装</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ubuntu安装cron">
+        <span class="has-mr-6">1.1</span>
+        <span>ubuntu安装cron</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#centOS安装">
+        <span class="has-mr-6">2</span>
+        <span>centOS安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">3</span>
+        <span>使用</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
 
     
     
@@ -347,7 +443,7 @@
             <div class="level-start has-text-centered-mobile" style="display:flex">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="计算机网络协议" height="28">
+                    <img src="/images/logo.svg" alt="使用Crontab 执行定时任务" height="28">
                 
                 </a>
                 <p class="is-size-7">
