@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>权限验证方法集合 - Garmin Notes</title>
+<title>redis5.0.5离线安装 - Garmin Notes</title>
 
 
-    <meta name="description" content="权限验证方法集合">
+    <meta name="description" content="redis5.0.5离线安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="权限验证方法集合">
-<meta property="og:url" content="http://garmin954.github.io/2020/05/17/php/laravel/%E6%9D%83%E9%99%90/%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81%E7%9A%84%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/index.html">
+<meta property="og:title" content="redis5.0.5离线安装">
+<meta property="og:url" content="http://garmin954.github.io/2020/07/23/linux/reids5.0.5%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Garmin Notes">
-<meta property="og:description" content="权限验证方法集合">
+<meta property="og:description" content="redis5.0.5离线安装">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-05-17T13:15:57.000Z">
-<meta property="article:modified_time" content="2020-05-17T03:17:34.029Z">
+<meta property="article:published_time" content="2020-07-23T04:12:57.000Z">
+<meta property="article:modified_time" content="2020-07-24T09:16:22.026Z">
 <meta property="article:author" content="Garmin">
-<meta property="article:tag" content="auth">
+<meta property="article:tag" content="Garmin 远路 YuanLu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="权限验证方法集合" height="28">
+                <img src="/images/logo.svg" alt="redis5.0.5离线安装" height="28">
             
             </a>
         </div>
@@ -140,18 +140,20 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>权限验证方法集合
+                <i class="fas fa-angle-double-right"></i>redis5.0.5离线安装
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-17T13:15:57.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-17</time>
+                <time class="level-item has-text-grey" datetime="2020-07-23T04:12:57.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-07-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-24T09:16:22.026Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-24</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/php/">php</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/php/laravel/">laravel</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -159,7 +161,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 16 个字)
+                    3 分钟 读完 (大约 484 个字)
                 </span>
                 
                 
@@ -172,31 +174,69 @@
         </div>
         
         <div class="content">
-            <p>权限验证方法集合</p>
+            <p>redis5.0.5离线安装</p>
 <a id="more"></a>
 
-<h3 id="中间件Middleware"><a href="#中间件Middleware" class="headerlink" title="中间件Middleware"></a>中间件Middleware</h3><h3 id="策略Policy"><a href="#策略Policy" class="headerlink" title="策略Policy"></a>策略Policy</h3>
+
+<h3 id="安装gcc"><a href="#安装gcc" class="headerlink" title="安装gcc"></a>安装gcc</h3><p>使用yum直接安装比较省事，但是需要服务器有外网</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure>
+
+<p>或者 <a href="'http://mirrors.aliyun.com/centos/7/os/x86_64/Packages/'">阿里云包</a> 下载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">compat-libmpc-1.0.1-3.el7.x86_64.rpm</span><br><span class="line">cpp-4.8.5-39.el7.x86_64.rpm</span><br><span class="line">gcc-4.8.5-39.el7.x86_64.rpm</span><br><span class="line">glibc-devel-2.17-307.el7.1.x86_64.rpm</span><br><span class="line">glibc-headers-2.17-307.el7.1.x86_64.rpm</span><br><span class="line">kernel-headers-3.10.0-1127.el7.x86_64.rpm</span><br><span class="line">mpfr-3.1.1-4.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpfr-3.1.1-4.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>检查是否安装gcc</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载Tcl"><a href="#下载Tcl" class="headerlink" title="下载Tcl"></a>下载Tcl</h3><p><code>https://sourceforge.net/projects/tcl/files/Tcl/8.5.19/</code></p>
+<ol>
+<li>tar zxtcl8.6.1-src.tar.gz解压</li>
+<li>cd 到tcl文件夹里然后<br><code>cd unix</code></li>
+<li>运行   <code>./configure</code></li>
+<li>编译   <code>make</code></li>
+<li>安装   <code>make install</code></li>
+</ol>
+<h3 id="下载redis"><a href="#下载redis" class="headerlink" title="下载redis"></a>下载redis</h3><p><code>wget http://download.redis.io/releases/redis-5.0.5.tar.gz</code></p>
+<ul>
+<li>本地安装 <a href="http://download.redis.io/releases/redis-5.0.5.tar.gz">安装包</a></li>
+<li>解压安装包 <code>tar -zxvf redis-5.0.5.tar.gz</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make test</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><ol>
+<li><p>在文件夹redis下创建bin 和 etc 目录</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis/</span><br><span class="line">mkdir bin </span><br><span class="line">mkdir etc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动文件<br>先将 redis-5.0.5 里的主配置文件 redis.conf 移动到刚创建的 etc 文件夹</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv redis.conf /usr/local/redis/etc/</span><br></pre></td></tr></table></figure>
+<p>再将 src 目录里带有绿色标识的文件全都移动到刚创建的 bin 文件夹</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel  redis-server redis-trib.rb /usr/local/redis/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改主配置文件<br>进入 etc 目录，修改 redis.conf 文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis/etc/</span><br><span class="line">vi redis.conf</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>把<code>#bind 127.0.0.1</code>注释取消（解决只能特定网段连接的限制；正式服务器部署如阿里云，为项目安全严格可以保留注释，自己用的话就注释掉）</li>
+<li>将<code>protected-mode</code>属性改为<code>no</code>（关闭保护模式，不然会阻止远程访问；同上，正式服务器项目上线可不修改）</li>
+<li>将<code>daemonize</code>属性改为<code>yes</code>（这样启动时就在后台启动）</li>
+</ul>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>在 redis 目录下执行：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etc]# cd /usr/local/redis/</span><br><span class="line">[root@localhost redis]# ./bin/redis-server /usr/local/redis/etc/redis.conf</span><br><span class="line">[root@localhost redis]# ps -ef | grep redis</span><br></pre></td></tr></table></figure>
+<p>启动<br><code>./bin/redis-cli</code></p>
+
         </div>
         
             <ul class="post-copyright" style='display:none'>
-            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/17/php/laravel/%E6%9D%83%E9%99%90/%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81%E7%9A%84%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/">权限验证方法集合</a></li>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/07/23/linux/reids5.0.5%E5%AE%89%E8%A3%85/">redis5.0.5离线安装</a></li>
             <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
-            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/17/php/laravel/%E6%9D%83%E9%99%90/%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81%E7%9A%84%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/">http://garmin954.github.io/2020/05/17/php/laravel/%E6%9D%83%E9%99%90/%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81%E7%9A%84%E6%96%B9%E6%B3%95%E9%9B%86%E5%90%88/</a></li>
-            <li><strong>发布时间：</strong>2020-05-17</li>
+            <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/07/23/linux/reids5.0.5%E5%AE%89%E8%A3%85/">http://garmin954.github.io/2020/07/23/linux/reids5.0.5%E5%AE%89%E8%A3%85/</a></li>
+            <li><strong>发布时间：</strong>2020-07-23</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/auth/" rel="tag">auth</a>
-                </div>
-            </div>
-        </div>
         
         
         
@@ -210,17 +250,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/19/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/%E9%98%B2%E6%AD%A2xss%E6%94%BB%E5%87%BBHTMLPurifier/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">防止xss攻击HTMLPurifier</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/17/php/laravel/%E6%89%A9%E5%B1%95%E5%8C%85/Debugbar/">
-                <span class="level-item">页面调优 Debugbar</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/23/linux/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+                <span class="level-item">Linux系统坏境安装</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -345,14 +378,26 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#中间件Middleware">
+        <a class="is-flex" href="#安装gcc">
         <span class="has-mr-6">1</span>
-        <span>中间件Middleware</span>
+        <span>安装gcc</span>
         </a></li><li>
-        <a class="is-flex" href="#策略Policy">
+        <a class="is-flex" href="#下载Tcl">
         <span class="has-mr-6">2</span>
-        <span>策略Policy</span>
-        </a></li></ul>
+        <span>下载Tcl</span>
+        </a></li><li>
+        <a class="is-flex" href="#下载redis">
+        <span class="has-mr-6">3</span>
+        <span>下载redis</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#配置">
+        <span class="has-mr-6">3.1</span>
+        <span>配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#启动">
+        <span class="has-mr-6">3.2</span>
+        <span>启动</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -376,7 +421,7 @@
             <div class="level-start has-text-centered-mobile" style="display:flex">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="权限验证方法集合" height="28">
+                    <img src="/images/logo.svg" alt="redis5.0.5离线安装" height="28">
                 
                 </a>
                 <p class="is-size-7">
