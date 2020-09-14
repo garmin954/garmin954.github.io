@@ -135,7 +135,74 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/09/web/vue/Vue%E4%B9%8BMixins(%E6%B7%B7%E5%85%A5)/"><i class="fas fa-angle-double-right"></i>Vue之Mixins(混入)</a>
+                <a class="has-link-black-ter" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"><i class="fas fa-angle-double-right"></i>变量的解构与赋值</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.700Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 240 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.<br>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.</p>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/const/" rel="tag">const</a>,&nbsp;<a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/"><i class="fas fa-angle-double-right"></i>小程序登录流程</a>
             
         </h1>
         
@@ -146,7 +213,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
                 </div>
                 
                 
@@ -154,7 +221,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    1 分钟 读完 (大约 202 个字)
                 </span>
                 
                 
@@ -162,7 +229,25 @@
         </div>
         
         <div class="content">
-            
+            <h3 id="先放一张小程序官方登录流程时序压压惊"><a href="#先放一张小程序官方登录流程时序压压惊" class="headerlink" title="先放一张小程序官方登录流程时序压压惊"></a>先放一张小程序官方登录流程时序压压惊</h3><p><img src="/images/api-login.jpg" alt=""></p>
+<ul>
+<li><p>第一步： 前端 wx.login 获取<code>code</code></p>
+</li>
+<li><p>第二步： 前端 通过button按钮获取 <code>iv</code> 和 <code>encryptedData</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button  open-type&#x3D;&quot;getUserInfo&quot; bindgetuserinfo&#x3D;&quot;bindGetUserInfo&quot; lang&#x3D;&quot;zh_CN&quot; type&#x3D;&quot;primary&quot;&gt;</span><br><span class="line">   授权登录</span><br><span class="line">&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>第三步：前端 wx.request 携带 <code>code, iv, encryptedData</code> 请求接口，服务器端 拿去code 请求微信接口 换取 <code>openid ,session_key</code></p>
+</li>
+<li><p>第四步：服务端 查看数据库是否存在用户，不存在时用session_key进行解密（得到用户信息），存在时直接执行第五步</p>
+</li>
+<li><p>第五步：服务端生产token返回给前端</p>
+</li>
+<li><p>第六步：前端处理token和登录状态</p>
+</li>
+</ul>
+<h4 id="我的简约思维导图"><a href="#我的简约思维导图" class="headerlink" title="我的简约思维导图"></a>我的简约思维导图</h4><p><img src="/images/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95.png" alt=""></p>
+<hr>
+<h3 id="前端登录状态及token存储"><a href="#前端登录状态及token存储" class="headerlink" title="前端登录状态及token存储"></a>前端登录状态及token存储</h3><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+
         </div>
         
         
@@ -238,7 +323,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/"><i class="fas fa-angle-double-right"></i>小程序登录流程</a>
+                <a class="has-link-black-ter" href="/2020/05/09/web/vue/Vue%E4%B9%8BMixins(%E6%B7%B7%E5%85%A5)/"><i class="fas fa-angle-double-right"></i>Vue之Mixins(混入)</a>
             
         </h1>
         
@@ -249,7 +334,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a>
+                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
                 </div>
                 
                 
@@ -257,7 +342,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 202 个字)
+                    几秒 读完 (大约 0 个字)
                 </span>
                 
                 
@@ -265,25 +350,7 @@
         </div>
         
         <div class="content">
-            <h3 id="先放一张小程序官方登录流程时序压压惊"><a href="#先放一张小程序官方登录流程时序压压惊" class="headerlink" title="先放一张小程序官方登录流程时序压压惊"></a>先放一张小程序官方登录流程时序压压惊</h3><p><img src="/images/api-login.jpg" alt=""></p>
-<ul>
-<li><p>第一步： 前端 wx.login 获取<code>code</code></p>
-</li>
-<li><p>第二步： 前端 通过button按钮获取 <code>iv</code> 和 <code>encryptedData</code></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button  open-type&#x3D;&quot;getUserInfo&quot; bindgetuserinfo&#x3D;&quot;bindGetUserInfo&quot; lang&#x3D;&quot;zh_CN&quot; type&#x3D;&quot;primary&quot;&gt;</span><br><span class="line">   授权登录</span><br><span class="line">&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>第三步：前端 wx.request 携带 <code>code, iv, encryptedData</code> 请求接口，服务器端 拿去code 请求微信接口 换取 <code>openid ,session_key</code></p>
-</li>
-<li><p>第四步：服务端 查看数据库是否存在用户，不存在时用session_key进行解密（得到用户信息），存在时直接执行第五步</p>
-</li>
-<li><p>第五步：服务端生产token返回给前端</p>
-</li>
-<li><p>第六步：前端处理token和登录状态</p>
-</li>
-</ul>
-<h4 id="我的简约思维导图"><a href="#我的简约思维导图" class="headerlink" title="我的简约思维导图"></a>我的简约思维导图</h4><p><img src="/images/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95.png" alt=""></p>
-<hr>
-<h3 id="前端登录状态及token存储"><a href="#前端登录状态及token存储" class="headerlink" title="前端登录状态及token存储"></a>前端登录状态及token存储</h3><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-
+            
         </div>
         
         
@@ -681,78 +748,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/16/articles/%E5%AD%A6%E4%B9%A0%E5%86%99%E4%BD%9C/"><i class="fas fa-angle-double-right"></i>学习写作</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-16T05:16:57.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-16</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-16T14:43:17.754Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-16</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/articles/">articles</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    3 分钟 读完 (大约 509 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <h3 id="一，为什么要学习写作"><a href="#一，为什么要学习写作" class="headerlink" title="一，为什么要学习写作"></a>一，为什么要学习写作</h3><ul>
-<li>记录工作生活的问题解决方法和经验总结</li>
-<li>提升自己的语言构思能力和逻辑能力</li>
-</ul>
-<h3 id="二，怎么写作"><a href="#二，怎么写作" class="headerlink" title="二，怎么写作"></a>二，怎么写作</h3><blockquote>
-<p>一篇技术文章，除了刚我们说的这种结构体，还有开篇、总结、呼吁行动等环节。综合起来，常见的技术文章组织结构如下：</p>
-</blockquote>
-<ol>
-<li><p>开篇，这部分阐明文章讲什么、能带给读者什么价值；</p>
-</li>
-<li><p>结构体，按照一定的结构，展开叙述，比如时间线、比如走读代码的逻辑、比如设计演示示例的过程（问题-设计思路-代码演示-代码解读-结果展示）、比如QA（问题-答案）、比如并列条目、比如总分总、比如实战小项目的讲解过程（项目背景-效果展示-设计解释-代码演示-代码解读-延伸场景）等；</p>
-</li>
-<li><p>总结，一段话，回顾讲过的要点，点出读者应该注意的地方；</p>
-</li>
-<li><p>呼吁行动，可以一两句话，呼吁读者自己设计代码、动手试试，或者给出一些练习题，让读者去做。</p>
-</li>
-</ol>
-<h5 id="2-1-开篇"><a href="#2-1-开篇" class="headerlink" title="2.1 开篇"></a>2.1 开篇</h5><p>   文章的开头部分，往往决定着读者是否愿意继续看下去，因此切入点要足够精准，足够切题，且足够有吸引力。<br> 这部分阐明文章讲什么、能带给读者什么价值； </p>
-<h5 id="2-2-结构体"><a href="#2-2-结构体" class="headerlink" title="2.2 结构体"></a>2.2 结构体</h5><p>  各个部分也需要串成串，那就需要我们加入一定的呼应。我们的文章可以分成多个部分，但所有部分务必应该为题目，也就是主题服务。因此在各部分之间，就需要出现必要的呼应，</p>
-<h5 id="2-3-总结"><a href="#2-3-总结" class="headerlink" title="2.3 总结"></a>2.3 总结</h5><p>  一段话，回顾讲过的要点，点出读者应该注意的地方；</p>
-
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -822,7 +817,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </a>
             </div>
@@ -832,7 +827,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </a>
             </div>
@@ -939,6 +934,14 @@
         <a class="level is-marginless" href="/categories/web/">
             <span class="level-start">
                 <span class="level-item">web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/webpack/">
+            <span class="level-start">
+                <span class="level-item">webpack</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1192,6 +1195,25 @@
         
         <article class="media">
             
+            <a href="/2020/09/13/web/webpack/webpack%E5%9F%BA%E7%A1%80/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Webpack基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-12T16:00:00.000Z">2020-09-13</time></div>
+                    <a href="/2020/09/13/web/webpack/webpack%E5%9F%BA%E7%A1%80/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Webpack基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack/">webpack</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/08/06/php/%E5%85%B6%E4%BB%96/PHP%20AES%E5%8A%A0%E5%AF%86%E5%AF%B9%E6%8E%A5JAVA%20/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP所有版本 AES加密对接 JAVA">
@@ -1266,25 +1288,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/07/23/linux/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux系统坏境安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-23T04:12:57.000Z">2020-07-23</time></div>
-                    <a href="/2020/07/23/linux/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linux系统坏境安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1295,6 +1298,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
@@ -1387,6 +1401,25 @@
         
         <article class="media">
             
+            <a href="/2020/09/13/web/webpack/webpack%E5%9F%BA%E7%A1%80/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Webpack基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-12T16:00:00.000Z">2020-09-13</time></div>
+                    <a href="/2020/09/13/web/webpack/webpack%E5%9F%BA%E7%A1%80/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Webpack基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack/">webpack</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/08/06/php/%E5%85%B6%E4%BB%96/PHP%20AES%E5%8A%A0%E5%AF%86%E5%AF%B9%E6%8E%A5JAVA%20/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP所有版本 AES加密对接 JAVA">
@@ -1461,25 +1494,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/07/23/linux/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux系统坏境安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-23T04:12:57.000Z">2020-07-23</time></div>
-                    <a href="/2020/07/23/linux/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linux系统坏境安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1490,6 +1504,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/08/">
