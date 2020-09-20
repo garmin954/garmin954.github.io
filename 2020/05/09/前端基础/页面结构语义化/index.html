@@ -7,21 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>前端基础/页面结构语义化 - Garmin Notes</title>
+<title>argument - Garmin Notes</title>
 
 
-    <meta name="description" content="1. 为什么需要语义化？ 易维护，易修改，易阅读 有利于搜索引擎爬取（seo）  2. 语义化是什么？ 语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。   2.1 头部&lt;header&gt;元素有两种用法，第一是标注内容的标题，第二是标注网页的页眉，如上图你看到的那样。除非必要（内容标题附带其它信息的情况下：发布时间、作者">
+    <meta name="description" content="语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端基础&#x2F;页面结构语义化">
+<meta property="og:title" content="argument">
 <meta property="og:url" content="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/index.html">
 <meta property="og:site_name" content="Garmin Notes">
-<meta property="og:description" content="1. 为什么需要语义化？ 易维护，易修改，易阅读 有利于搜索引擎爬取（seo）  2. 语义化是什么？ 语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。   2.1 头部&lt;header&gt;元素有两种用法，第一是标注内容的标题，第二是标注网页的页眉，如上图你看到的那样。除非必要（内容标题附带其它信息的情况下：发布时间、作者">
+<meta property="og:description" content="语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://garmin954.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-05-09T14:37:39.700Z">
-<meta property="article:modified_time" content="2020-04-24T13:36:48.041Z">
+<meta property="article:modified_time" content="2020-09-20T07:52:20.250Z">
 <meta property="article:author" content="Garmin">
-<meta property="article:tag" content="Garmin 远路 YuanLu">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="const">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://garmin954.github.io/images/og_image.png">
 
@@ -81,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="前端基础/页面结构语义化" height="28">
+                <img src="/images/logo.svg" alt="argument" height="28">
             
             </a>
         </div>
@@ -140,7 +142,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>前端基础/页面结构语义化
+                <i class="fas fa-angle-double-right"></i>argument
             
         </h1>
         
@@ -148,13 +150,20 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.700Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
                 
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-20T07:52:20.250Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-20</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/js/">js</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1023 个字)
+                    7 分钟 读完 (大约 1082 个字)
                 </span>
                 
                 
@@ -167,32 +176,69 @@
         </div>
         
         <div class="content">
-            <h3 id="1-为什么需要语义化？"><a href="#1-为什么需要语义化？" class="headerlink" title="1. 为什么需要语义化？"></a>1. 为什么需要语义化？</h3><ul>
-<li>易维护，易修改，易阅读</li>
-<li>有利于搜索引擎爬取（seo）</li>
-</ul>
-<h3 id="2-语义化是什么？"><a href="#2-语义化是什么？" class="headerlink" title="2. 语义化是什么？"></a>2. 语义化是什么？</h3><blockquote>
-<p>语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。</p>
-</blockquote>
-<p><img src="https://garmin-api.github.io/images/page.png" alt=""></p>
-<h4 id="2-1-头部"><a href="#2-1-头部" class="headerlink" title="2.1 头部"></a>2.1 头部</h4><p><code>&lt;header&gt;</code>元素有两种用法，第一是标注内容的标题，第二是标注网页的页眉，<br>如上图你看到的那样。除非必要（内容标题附带其它信息的情况下：发布时间、作者等），<br>一般不在内容中使用<code>&lt;header&gt;</code>因而，网页中可以包含多个<code>&lt;header&gt;</code>元素。<br>按照 HTML5 的规定，<code>&lt;header&gt;</code>都应包含某个级别的标题，所以应隐式或显式地包含标题，<br>通常将不希望显示的标题设置为<code>display: none</code>; 一方面遵守规范，另一方面则提供了无障碍阅读而不至于影响到页面设计。</p>
-<h4 id="2-2-导航栏"><a href="#2-2-导航栏" class="headerlink" title="2.2 导航栏"></a>2.2 导航栏</h4><p>导航栏使用<code>&lt;nav&gt;</code>看起来是理所当然的，进一步，它也用于一组文章的链接。一个页面可以包含多个<nav>元素，<br>但通常仅仅在页面的主要导航部分使用它。</p>
-<blockquote>
-<p>附注</p>
-</blockquote>
-<p><code>&lt;aside&gt;</code>元素并不仅仅是侧栏，它表示与它周围文本没有密切关系的内容。<br>文章中同样可以使用<code>&lt;aside&gt;</code>元素，来说明文章的附加内容、解释说明某个观点、相关内容链接等等。</p>
-<p> 当<code>&lt;aside&gt;</code>用于侧栏时，其表示整个网页的附加内容。通常的广告区域、搜索、分享链接则位于侧栏。<br> 侧栏中的<code>&lt;section&gt;</code>元素规定了一个区域，通常是带有标题的内容。</p>
-<h5 id="标签适合标记的内容区块："><a href="#标签适合标记的内容区块：" class="headerlink" title="标签适合标记的内容区块："></a><section>标签适合标记的内容区块：</h5><ul>
-<li>与页面主体并列显示的小内容块。</li>
-<li>独立性内容，清单、表单等。</li>
-<li>分组内容，如 CMS 系统中的文章分类区块。</li>
-<li>比较长文档的一部分，可能仅仅是为了正确规定页面大纲。<br><code>&lt;div&gt;</code>标签依然是可用的，当你觉得使用其它标签都不太合适的时候。新的语义元素出现之前，我们总是这么干的！</li>
-</ul>
-<h4 id="2-3-页脚"><a href="#2-3-页脚" class="headerlink" title="2.3 页脚"></a>2.3 页脚</h4><p> 同可“包罗万象”的<code>&lt;header&gt;</code>元素不同，标准规定<code>&lt;footer&gt;</code>标签仅仅可以包含版权、来源信息、法律限制等等之类的文本或链接信息。<br> 如果想要在页脚中包含其它内容，可以使用熟悉的<code>&lt;div&gt;</code>来帮忙。</p>
-<h4 id="2-4-主要内容"><a href="#2-4-主要内容" class="headerlink" title="2.4 主要内容"></a>2.4 主要内容</h4><p>在早先的 HTML5 版本中并没有规定页面主体的标签，相关的书中经常会说：除去头部、尾部、侧栏等其它部分，<br>剩下的自然是主体部分。</p>
-<p>然而，HTML5.1 中规定了一个<code>&lt;main&gt;</code>标签来标识主体内容。<code>&lt;main&gt;</code>标签不能包含在页面其它区块元素中，<br>通常是<code>&lt;body&gt;</code>的子标签，或者是全局<code>&lt;div&gt;</code>的子标签。<code>&lt;main&gt;</code>标签可以帮助屏幕阅读工具识别页面的主体部分，<br>从而让访问者迅速得到有用的信息。</p>
-<h4 id="2-5-文章"><a href="#2-5-文章" class="headerlink" title="2.5 文章"></a>2.5 文章</h4><p><code>&lt;article&gt;</code>表示一个完整的、自成一体的内容块。如文章或新闻报道。<code>&lt;article&gt;</code><br>应包含完整的标题、文章署名、发布时间、正文。当语义与表现发生冲突，<br>例如有时需要将文章分多个页面显示，那么需要把每个页面的文章区域都用<code>&lt;article&gt;</code>标记。</p>
-<p>文章中包含插图时，使用新的语义元素<code>&lt;figure&gt;</code>标签。</p>
+            <p>语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。</p>
+<!--more>
+
+### 1. 为什么需要语义化？
+- 易维护，易修改，易阅读
+- 有利于搜索引擎爬取（seo）
+
+### 2. 语义化是什么？
+>语义元素均有一个共同特点——他们均不做任何事情。换句话说，语义元素仅仅是页面结构的规范化，并不会对内容有本质的影响。
+
+![](https://garmin-api.github.io/images/page.png)
+
+
+#### 2.1 头部
+`<header>`元素有两种用法，第一是标注内容的标题，第二是标注网页的页眉，
+如上图你看到的那样。除非必要（内容标题附带其它信息的情况下：发布时间、作者等），
+一般不在内容中使用`<header>`因而，网页中可以包含多个`<header>`元素。
+按照 HTML5 的规定，`<header>`都应包含某个级别的标题，所以应隐式或显式地包含标题，
+通常将不希望显示的标题设置为`display: none`; 一方面遵守规范，另一方面则提供了无障碍阅读而不至于影响到页面设计。
+
+
+#### 2.2 导航栏
+导航栏使用`<nav>`看起来是理所当然的，进一步，它也用于一组文章的链接。一个页面可以包含多个<nav>元素，
+但通常仅仅在页面的主要导航部分使用它。
+
+
+> 附注
+
+`<aside>`元素并不仅仅是侧栏，它表示与它周围文本没有密切关系的内容。
+文章中同样可以使用`<aside>`元素，来说明文章的附加内容、解释说明某个观点、相关内容链接等等。
+
+ 当`<aside>`用于侧栏时，其表示整个网页的附加内容。通常的广告区域、搜索、分享链接则位于侧栏。
+ 侧栏中的`<section>`元素规定了一个区域，通常是带有标题的内容。
+
+ ##### <section>标签适合标记的内容区块：
+
+ - 与页面主体并列显示的小内容块。
+ - 独立性内容，清单、表单等。
+ - 分组内容，如 CMS 系统中的文章分类区块。
+ - 比较长文档的一部分，可能仅仅是为了正确规定页面大纲。
+ `<div>`标签依然是可用的，当你觉得使用其它标签都不太合适的时候。新的语义元素出现之前，我们总是这么干的！
+
+
+ #### 2.3 页脚
+ 同可“包罗万象”的`<header>`元素不同，标准规定`<footer>`标签仅仅可以包含版权、来源信息、法律限制等等之类的文本或链接信息。
+ 如果想要在页脚中包含其它内容，可以使用熟悉的`<div>`来帮忙。
+
+
+#### 2.4 主要内容
+在早先的 HTML5 版本中并没有规定页面主体的标签，相关的书中经常会说：除去头部、尾部、侧栏等其它部分，
+剩下的自然是主体部分。
+
+然而，HTML5.1 中规定了一个`<main>`标签来标识主体内容。`<main>`标签不能包含在页面其它区块元素中，
+通常是`<body>`的子标签，或者是全局`<div>`的子标签。`<main>`标签可以帮助屏幕阅读工具识别页面的主体部分，
+从而让访问者迅速得到有用的信息。
+
+
+#### 2.5 文章
+`<article>`表示一个完整的、自成一体的内容块。如文章或新闻报道。`<article>`
+应包含完整的标题、文章署名、发布时间、正文。当语义与表现发生冲突，
+例如有时需要将文章分多个页面显示，那么需要把每个页面的文章区域都用`<article>`标记。
+
+文章中包含插图时，使用新的语义元素`<figure>`标签。
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;</span><br><span class="line">  &lt;h1&gt;标题&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;!-- 内容 --&gt;</span><br><span class="line">  &lt;&#x2F;p&gt;</span><br><span class="line">  &lt;figure&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;#&quot; alt&#x3D;&quot;插图&quot;&gt;</span><br><span class="line">    &lt;figcaption&gt;这是一个插图&lt;&#x2F;figcaption&gt;</span><br><span class="line">  &lt;&#x2F;figure&gt;</span><br><span class="line">&lt;&#x2F;article&gt;</span><br></pre></td></tr></table></figure>
 <p>上述情况下，<code>&lt;figcaption&gt;</code>包含了关于插图的详细解释，则<code>&lt;img&gt;</code>的<code>alt</code>属性可以略去。</p>
 <h3 id="3-参考"><a href="#3-参考" class="headerlink" title="3. 参考"></a>3. 参考</h3><p>转自<a href="https://rainylog.com/post/ife-note-1/">雨落</a>博客</p>
@@ -200,7 +246,7 @@
         </div>
         
             <ul class="post-copyright" style='display:none'>
-            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/">前端基础/页面结构语义化</a></li>
+            <li><strong>本文标题：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/">argument</a></li>
             <li><strong>本文作者：</strong><a href="http://garmin954.github.io">Garmin</a></li>
             <li><strong>本文链接：</strong><a href="http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/">http://garmin954.github.io/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/</a></li>
             <li><strong>发布时间：</strong>2020-05-09</li>
@@ -208,6 +254,16 @@
             </li>
             </ul>
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/const/" rel="tag">const</a>,&nbsp;<a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -222,16 +278,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/arguments/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/09/%E7%AE%97%E6%B3%95/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E5%A4%A7O%E8%A1%A8%E7%A4%BA%E6%B3%95/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">argument</span>
+                <span class="level-item">算法/复杂度分析和大O表示法</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/let%E5%92%8Cvar%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/">
-                <span class="level-item">let和var基础详解</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/arguments/">
+                <span class="level-item">argument</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -349,53 +405,6 @@
     
         
 
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#1-为什么需要语义化？">
-        <span class="has-mr-6">1</span>
-        <span>1. 为什么需要语义化？</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-语义化是什么？">
-        <span class="has-mr-6">2</span>
-        <span>2. 语义化是什么？</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#2-1-头部">
-        <span class="has-mr-6">2.1</span>
-        <span>2.1 头部</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-2-导航栏">
-        <span class="has-mr-6">2.2</span>
-        <span>2.2 导航栏</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#标签适合标记的内容区块：">
-        <span class="has-mr-6">2.2.1</span>
-        <span>标签适合标记的内容区块：</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#2-3-页脚">
-        <span class="has-mr-6">2.3</span>
-        <span>2.3 页脚</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-4-主要内容">
-        <span class="has-mr-6">2.4</span>
-        <span>2.4 主要内容</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-5-文章">
-        <span class="has-mr-6">2.5</span>
-        <span>2.5 文章</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#3-参考">
-        <span class="has-mr-6">3</span>
-        <span>3. 参考</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
-
 
     
     
@@ -415,7 +424,7 @@
             <div class="level-start has-text-centered-mobile" style="display:flex">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="前端基础/页面结构语义化" height="28">
+                    <img src="/images/logo.svg" alt="argument" height="28">
                 
                 </a>
                 <p class="is-size-7">
