@@ -135,7 +135,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/let%E5%92%8Cvar%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/"><i class="fas fa-angle-double-right"></i>let和var基础详解</a>
+                <a class="has-link-black-ter" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"><i class="fas fa-angle-double-right"></i>变量的解构与赋值</a>
             
         </h1>
         
@@ -154,7 +154,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    22 分钟 读完 (大约 3277 个字)
+                    2 分钟 读完 (大约 240 个字)
                 </span>
                 
                 
@@ -162,9 +162,7 @@
         </div>
         
         <div class="content">
-            <h3 id="let是什么"><a href="#let是什么" class="headerlink" title="let是什么"></a>let是什么</h3><blockquote>
-<p>ES6新增了<code>let</code>命令，用来声明变量。它的用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效。</p>
-</blockquote>
+            <p>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.<br>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.</p>
         </div>
         
         
@@ -175,66 +173,16 @@
                 
                 <div class="level-item is-size-7 is-uppercase">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>,&nbsp;<a class="has-link-grey -link" href="/tags/let/" rel="tag">let</a>
+                    <a class="has-link-grey -link" href="/tags/const/" rel="tag">const</a>,&nbsp;<a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/js/" rel="tag">js</a>
                 </div>
                 
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/let%E5%92%8Cvar%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/09/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/05/09/web/vue/Vue%E4%B9%8BMixins(%E6%B7%B7%E5%85%A5)/"><i class="fas fa-angle-double-right"></i>Vue之Mixins(混入)</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.690Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 0 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            
-        </div>
-        
-        
         
         
     </div>
@@ -285,6 +233,56 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 500表示触屏时间，可以根据实际情况写，只要达到这个时间就会触发setTimeout里的事件</span><br><span class="line">&#x2F;&#x2F; 删除图片方法</span><br><span class="line">touchin(index, obj)&#123;</span><br><span class="line">    var _self&#x3D;this;</span><br><span class="line">    this.Loop &#x3D; setTimeout(function() &#123;</span><br><span class="line">        _self.Loop &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;执行长按要执行的内容，如弹出菜单</span><br><span class="line">        wx.showModal(&#123;</span><br><span class="line">            title: &#39;提示&#39;,</span><br><span class="line">            content: &#39;确认删除图片&#39;,</span><br><span class="line">            success: function (res) &#123;</span><br><span class="line">                if (res.confirm) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 删除操作</span><br><span class="line">                    _self.images_list.splice(index, 1);</span><br><span class="line">                &#125; else if (res.cancel) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 取消操作</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;, 500);</span><br><span class="line">    return false;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 触屏离开的事件</span><br><span class="line">cleartime(index) &#123;</span><br><span class="line">    var that&#x3D;this;</span><br><span class="line">    clearTimeout(this.Loop);</span><br><span class="line">    if(that.Loop!&#x3D;0)&#123;</span><br><span class="line">        &#x2F;&#x2F;这里写要执行的内容（尤如onclick事件）</span><br><span class="line">        &#x2F;&#x2F; that.previewPicture(index)</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/09/web/vue/Vue%E4%B9%8BMixins(%E6%B7%B7%E5%85%A5)/"><i class="fas fa-angle-double-right"></i>Vue之Mixins(混入)</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.690Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 0 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            
         </div>
         
         
@@ -829,7 +827,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        13
+                        14
                     </p>
                 </a>
             </div>
@@ -892,7 +890,15 @@
             <span class="level-end">
                 <span class="level-item tag">14</span>
             </span>
-        </a></li><li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/js/es6/">
+            <span class="level-start">
+                <span class="level-item">es6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/linux/">
             <span class="level-start">
                 <span class="level-item">linux</span>
@@ -1254,25 +1260,6 @@
         
         <article class="media">
             
-            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
-                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mysql5.7离线安装">
@@ -1283,6 +1270,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
                     <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mysql5.7离线安装</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
@@ -1460,25 +1466,6 @@
         
         <article class="media">
             
-            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
-                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mysql5.7离线安装">
@@ -1489,6 +1476,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
                     <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mysql5.7离线安装</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
