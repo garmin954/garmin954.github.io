@@ -475,6 +475,74 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/arguments/"><i class="fas fa-angle-double-right"></i>argument</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.700Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-20T07:57:26.372Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-20</time>
+                
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1117 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>总所周知，js是一门相当灵活的语言。当我们在js中在调用一个函数的时候，我们经常会给这个函数传递一些参数，<br>js把传入到这个函数的全部参数存储在一个叫做<code>arguments</code>的东西里面，那么这到底是什么东西？</p>
+<p>在js中万物皆对象，甚至数组字符串函数都是对象。所以这个叫做<code>arguments</code>的东西也是个对象，而且是一个特殊的对象，<br>它的属性名是按照传入参数的序列来的，第1个参数的属性名是’0’，第2个参数的属性名是’1’，以此类推，并且它还有<code>length</code>属性，<br>存储的是当前传入函数参数的个数，很多时候我们把这种对象叫做<code>类数组对象</code>。类数组对象和数组都是对象这个妈生的，<br>但是<strong>数组是大哥比类数组对象多了很多其他的玩具(方法)</strong>，类数组对象只是长得很像数组的弟弟而已。</p>
+<p>慢着，刚刚不是说数组也是对象吗，现在这个类数组对象又是什么？<br> 没办法，js就是这么的灵活。这个类数组对象不仅存储给函数传入的参数，也具有一些其他的属性，等下会一一道来。</p>
+<p>因为类数组对象和数组有很多的共性，所以我们经常可以用<code>call</code>方法，<br>让类数组对象也使用的数组的一些方法，就是让这个弟弟去玩哥哥的玩具，比如……，<br>还是不扯远了，这篇文章只是说什么是<code>arguments</code>，想知道更多关于对象如何借调数组方法的话，请参考这篇文章。</p>
+<p>下面举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="built_in">arguments</span>.length == <span class="number">2</span> )&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>] + <span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'传入参数不合法'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">2</span>,<span class="number">3</span>) );</span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) );</span><br></pre></td></tr></table></figure>
+
+<p>看看结果：</p>
+<p>结果</p>
+<p>最后我们还可以看到<code>arguments</code>还有一个叫做<code>callee</code>的属性，这个属性是表示的是当前函数的一个引用，<br>简单点说，这个属性里面存储的我们调用的这个函数的代码，实在无法理解的时候，又到了<code>console.log</code>大显身手的时候了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showcallee</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">'这里是代码'</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="string">'这是另一段代码'</span>;</span><br><span class="line">    <span class="keyword">var</span> c = a + b;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">showcallee();</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<p>看到结果的你是不是和我一样惊呆了呢，这不就是我写的代码吗，<code>arguments.callee</code>完完整整的把这个函数的这段代码返回了。</p>
+<h3 id="arguments的一些妙用"><a href="#arguments的一些妙用" class="headerlink" title="arguments的一些妙用"></a>arguments的一些妙用</h3><h4 id="1-利用arguments实现方法的重载"><a href="#1-利用arguments实现方法的重载" class="headerlink" title="1.利用arguments实现方法的重载"></a>1.利用arguments实现方法的重载</h4><p>下面我们利用arguments对象来实现一个参数相加的函数，不论传入多少参数都行，将传入的参数相加后返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="built_in">arguments</span>.length,</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;len--;)&#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[len];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) );   <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">3</span>) );     <span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">7</span>) );   <span class="comment">//26</span></span><br></pre></td></tr></table></figure>
+<p>由于js是一种弱类型的语言，没有重载机制，当我们重写函数时，会将原来的函数直接覆盖，<br>这里我们能利用arguments，来判断传入的实参类型与数量进行不同的操作，然后返回不同的数值。</p>
+<h4 id="2-利用arguments-callee实现递归"><a href="#2-利用arguments-callee实现递归" class="headerlink" title="2.利用arguments.callee实现递归"></a>2.利用arguments.callee实现递归</h4><p>先来看看之前我们是怎么实现递归的，这是一个结算阶乘的函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">    &#125;<span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> num * factorial(num<span class="number">-1</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是当这个函数变成了一个匿名函数时，我们就可以利用callee来递归这个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">    &#125;<span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法虽然好用，但是有一点值得注意，ECMAScript4中为了限制js的灵活度，让js变得严格，<br>新增了严格模式，在严格模式中我们被禁止不使用var来直接声明一个全局变量，<br>当然这不是重点，重点是arguments.callee这个属性也被禁止了。不过这都不是事儿，<br>ES6为我们新增了很多好用的变量声明方式和新的语法糖，作为一个时髦的前端，我们赶紧学习一些ES6的新语法吧。</p>
+
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E8%AF%AD%E4%B9%89%E5%8C%96/"><i class="fas fa-angle-double-right"></i>argument</a>
             
         </h1>
@@ -588,74 +656,6 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/arguments/"><i class="fas fa-angle-double-right"></i>argument</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.700Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-20T07:57:26.372Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-20</time>
-                
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1117 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>总所周知，js是一门相当灵活的语言。当我们在js中在调用一个函数的时候，我们经常会给这个函数传递一些参数，<br>js把传入到这个函数的全部参数存储在一个叫做<code>arguments</code>的东西里面，那么这到底是什么东西？</p>
-<p>在js中万物皆对象，甚至数组字符串函数都是对象。所以这个叫做<code>arguments</code>的东西也是个对象，而且是一个特殊的对象，<br>它的属性名是按照传入参数的序列来的，第1个参数的属性名是’0’，第2个参数的属性名是’1’，以此类推，并且它还有<code>length</code>属性，<br>存储的是当前传入函数参数的个数，很多时候我们把这种对象叫做<code>类数组对象</code>。类数组对象和数组都是对象这个妈生的，<br>但是<strong>数组是大哥比类数组对象多了很多其他的玩具(方法)</strong>，类数组对象只是长得很像数组的弟弟而已。</p>
-<p>慢着，刚刚不是说数组也是对象吗，现在这个类数组对象又是什么？<br> 没办法，js就是这么的灵活。这个类数组对象不仅存储给函数传入的参数，也具有一些其他的属性，等下会一一道来。</p>
-<p>因为类数组对象和数组有很多的共性，所以我们经常可以用<code>call</code>方法，<br>让类数组对象也使用的数组的一些方法，就是让这个弟弟去玩哥哥的玩具，比如……，<br>还是不扯远了，这篇文章只是说什么是<code>arguments</code>，想知道更多关于对象如何借调数组方法的话，请参考这篇文章。</p>
-<p>下面举个栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="built_in">arguments</span>.length == <span class="number">2</span> )&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>] + <span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'传入参数不合法'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">2</span>,<span class="number">3</span>) );</span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) );</span><br></pre></td></tr></table></figure>
-
-<p>看看结果：</p>
-<p>结果</p>
-<p>最后我们还可以看到<code>arguments</code>还有一个叫做<code>callee</code>的属性，这个属性是表示的是当前函数的一个引用，<br>简单点说，这个属性里面存储的我们调用的这个函数的代码，实在无法理解的时候，又到了<code>console.log</code>大显身手的时候了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showcallee</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">'这里是代码'</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="string">'这是另一段代码'</span>;</span><br><span class="line">    <span class="keyword">var</span> c = a + b;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">showcallee();</span><br></pre></td></tr></table></figure>
-<p>结果</p>
-<p>看到结果的你是不是和我一样惊呆了呢，这不就是我写的代码吗，<code>arguments.callee</code>完完整整的把这个函数的这段代码返回了。</p>
-<h3 id="arguments的一些妙用"><a href="#arguments的一些妙用" class="headerlink" title="arguments的一些妙用"></a>arguments的一些妙用</h3><h4 id="1-利用arguments实现方法的重载"><a href="#1-利用arguments实现方法的重载" class="headerlink" title="1.利用arguments实现方法的重载"></a>1.利用arguments实现方法的重载</h4><p>下面我们利用arguments对象来实现一个参数相加的函数，不论传入多少参数都行，将传入的参数相加后返回。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="built_in">arguments</span>.length,</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;len--;)&#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[len];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) );   <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">3</span>) );     <span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log( add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">7</span>) );   <span class="comment">//26</span></span><br></pre></td></tr></table></figure>
-<p>由于js是一种弱类型的语言，没有重载机制，当我们重写函数时，会将原来的函数直接覆盖，<br>这里我们能利用arguments，来判断传入的实参类型与数量进行不同的操作，然后返回不同的数值。</p>
-<h4 id="2-利用arguments-callee实现递归"><a href="#2-利用arguments-callee实现递归" class="headerlink" title="2.利用arguments.callee实现递归"></a>2.利用arguments.callee实现递归</h4><p>先来看看之前我们是怎么实现递归的，这是一个结算阶乘的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">    &#125;<span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> num * factorial(num<span class="number">-1</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是当这个函数变成了一个匿名函数时，我们就可以利用callee来递归这个函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">    &#125;<span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个方法虽然好用，但是有一点值得注意，ECMAScript4中为了限制js的灵活度，让js变得严格，<br>新增了严格模式，在严格模式中我们被禁止不使用var来直接声明一个全局变量，<br>当然这不是重点，重点是arguments.callee这个属性也被禁止了。不过这都不是事儿，<br>ES6为我们新增了很多好用的变量声明方式和新的语法糖，作为一个时髦的前端，我们赶紧学习一些ES6的新语法吧。</p>
-
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
                 <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/const%E5%B8%B8%E9%87%8F%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/"><i class="fas fa-angle-double-right"></i>const常量基础详解</a>
             
         </h1>
@@ -725,7 +725,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"><i class="fas fa-angle-double-right"></i>变量的解构与赋值</a>
+                <a class="has-link-black-ter" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/let%E5%92%8Cvar%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/"><i class="fas fa-angle-double-right"></i>let和var基础详解</a>
             
         </h1>
         
@@ -733,7 +733,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-05-09T14:37:39.700Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-09</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-20T07:59:45.584Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-20</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-20T07:59:33.108Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-20</time>
                 
                 
                 <div class="level-item">
@@ -746,7 +746,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 240 个字)
+                    22 分钟 读完 (大约 3277 个字)
                 </span>
                 
                 
@@ -754,7 +754,9 @@
         </div>
         
         <div class="content">
-            <p>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.<br>定义常量,常量就是不变的值，用在函数，变量，数组，指针类型说明前（如：const int a=10;）表示的a值永远是10.</p>
+            <h3 id="let是什么"><a href="#let是什么" class="headerlink" title="let是什么"></a>let是什么</h3><blockquote>
+<p>ES6新增了<code>let</code>命令，用来声明变量。它的用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效。</p>
+</blockquote>
         </div>
         
         
@@ -765,13 +767,13 @@
                 
                 <div class="level-item is-size-7 is-uppercase">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/const/" rel="tag">const</a>,&nbsp;<a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>
+                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>,&nbsp;<a class="has-link-grey -link" href="/tags/let/" rel="tag">let</a>
                 </div>
                 
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/09/web/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/es6/let%E5%92%8Cvar%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -869,7 +871,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        14
                     </p>
                 </a>
             </div>
@@ -879,7 +881,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        24
                     </p>
                 </a>
             </div>
@@ -1004,15 +1006,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/web%E5%89%8D%E7%AB%AF/">
-            <span class="level-start">
-                <span class="level-item">web前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -1051,13 +1045,6 @@
                     <a class="tags has-addons" href="/tags/es6/">
                         <span class="tag">es6</span>
                         <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery/">
-                        <span class="tag">jQuery</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1195,20 +1182,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/">
-                        <span class="tag">表单验证</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E8%A1%A8%E6%A0%BC/">
-                        <span class="tag">表格</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%81%8D%E5%8E%86/">
                         <span class="tag">遍历</span>
                         <span class="tag is-grey">1</span>
@@ -1288,25 +1261,6 @@
         
         <article class="media">
             
-            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
-                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mysql5.7离线安装">
@@ -1317,6 +1271,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
                     <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mysql5.7离线安装</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
@@ -1494,25 +1467,6 @@
         
         <article class="media">
             
-            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
-                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mysql5.7离线安装">
@@ -1523,6 +1477,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
                     <a href="/2020/07/24/linux/mysql5.7%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mysql5.7离线安装</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="redis5.0.5离线安装">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T04:12:57.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/linux/reids5.0.5%E5%AE%89%E8%A3%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">redis5.0.5离线安装</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
